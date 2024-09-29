@@ -1,0 +1,1643 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WNI-6A9-GMSD-DD</title>
+  <link rel="stylesheet" href="./style.css">
+
+  <!-- <style>
+    @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
+
+
+
+
+
+    @keyframes slideInUp {
+      0% {
+        -webkit-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0);
+        visibility: visible;
+      }
+
+      100% {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+      }
+    }
+
+    .nd-slideInRight {
+      -webkit-animation-name: slideInRight;
+      animation-name: slideInRight;
+    }
+
+    @keyframes slideInRight {
+      0% {
+        -webkit-transform: translate3d(100%, 0, 0);
+        transform: translate3d(100%, 0, 0);
+        visibility: visible;
+      }
+
+      100% {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+      }
+    }
+
+
+    /* walton design convention ends here */
+    body {
+      line-height: 25px;
+      color: #000;
+      font-weight: 400;
+      font-size: 14px;
+      font-family: Titillium Web;
+    }
+
+    *,
+    ::after,
+    ::before {
+      box-sizing: border-box;
+    }
+
+    p {
+      font-family: "Titillium Web", sans-serif;
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
+
+    .nd-image-zoom-effect:hover {
+      -ms-transform: scale(1.1);
+      -webkit-transform: scale(1.1);
+      transform: scale(1.05);
+    }
+
+    .nd-ml-auto,
+    .nd-mx-auto {
+      margin-left: auto !important;
+    }
+
+    .nd-mr-auto,
+    .nd-mx-auto {
+      margin-right: auto !important;
+    }
+
+    .nd-d-block {
+      display: block !important;
+    }
+
+    img {
+      vertical-align: middle;
+      border-style: none;
+    }
+
+    canvas,
+    img,
+    video {
+      max-width: 100%;
+      height: auto;
+      box-sizing: border-box;
+    }
+
+    .nd-h3,
+    h3 {
+      font-size: 1.75rem;
+    }
+
+    .nd-experience-the-coolest-world {
+      position: relative;
+    }
+
+    .nd-experience-the-coolest-world-content {
+      position: absolute;
+      top: 4%;
+      padding: 0px;
+      width: 90%;
+    }
+
+    .nd-row {
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      margin-right: -15px;
+      margin-left: -15px;
+    }
+
+    .nd-delay-900ms {
+      -webkit-animation-delay: 900ms;
+      animation-delay: 900ms;
+    }
+
+    .nd-zoomIn {
+      -webkit-animation-name: zoomIn;
+      animation-name: zoomIn;
+    }
+
+    .nd-col-6 {
+      -ms-flex: 0 0 50%;
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+
+    .nd-col,
+    .nd-col-1,
+    .nd-col-10,
+    .nd-col-11,
+    .nd-col-12,
+    .nd-col-2,
+    .nd-col-3,
+    .nd-col-4,
+    .nd-col-5,
+    .nd-col-6,
+    .nd-col-7,
+    .nd-col-8,
+    .nd-col-9,
+    .nd-col-auto,
+    .nd-col-lg,
+    .nd-col-lg-1,
+    .nd-col-lg-10,
+    .nd-col-lg-11,
+    .nd-col-lg-12,
+    .nd-col-lg-2,
+    .nd-col-lg-3,
+    .nd-col-lg-4,
+    .nd-col-lg-5,
+    .nd-col-lg-6,
+    .nd-col-lg-7,
+    .nd-col-lg-8,
+    .nd-col-lg-9,
+    .nd-col-lg-auto,
+    .nd-col-md,
+    .nd-col-md-1,
+    .nd-col-md-10,
+    .nd-col-md-11,
+    .nd-col-md-12,
+    .nd-col-md-2,
+    .nd-col-md-3,
+    .nd-col-md-4,
+    .nd-col-md-5,
+    .nd-col-md-6,
+    .nd-col-md-7,
+    .nd-col-md-8,
+    .nd-col-md-9,
+    .nd-col-md-auto,
+    .nd-col-sm,
+    .nd-col-sm-1,
+    .nd-col-sm-10,
+    .nd-col-sm-11,
+    .nd-col-sm-12,
+    .nd-col-sm-2,
+    .nd-col-sm-3,
+    .nd-col-sm-4,
+    .nd-col-sm-5,
+    .nd-col-sm-6,
+    .nd-col-sm-7,
+    .nd-col-sm-8,
+    .nd-col-sm-9,
+    .nd-col-sm-auto,
+    .nd-col-xl,
+    .nd-col-xl-1,
+    .nd-col-xl-10,
+    .nd-col-xl-11,
+    .nd-col-xl-12,
+    .nd-col-xl-2,
+    .nd-col-xl-3,
+    .nd-col-xl-4,
+    .nd-col-xl-5,
+    .nd-col-xl-6,
+    .nd-col-xl-7,
+    .nd-col-xl-8,
+    .nd-col-xl-9,
+    .nd-col-xl-auto {
+      position: relative;
+      width: 100%;
+      padding-right: 15px;
+      padding-left: 15px;
+    }
+
+    .nd-col-3 {
+      -ms-flex: 0 0 25%;
+      flex: 0 0 25%;
+      max-width: 25%;
+    }
+
+    .nd-col-5 {
+      -ms-flex: 0 0 41.666667%;
+      flex: 0 0 41.666667%;
+      max-width: 41.666667%;
+    }
+
+    .nd-col-6 {
+      -ms-flex: 0 0 50%;
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+
+    .nd-col-7 {
+      -ms-flex: 0 0 58.333333%;
+      flex: 0 0 58.333333%;
+      max-width: 58.333333%;
+    }
+
+    .nd-experience-the-coolest-world-left-content {
+      /* position: absolute; */
+      width: 31%;
+      z-index: 1;
+      top: 0%;
+      left: 70%;
+    }
+
+    .nd-cus_div_style,
+    .nd-single_tvc {
+      position: relative;
+    }
+
+    .nd-image-zoom-effect {
+      transition: transform .7s;
+    }
+
+    img {
+      vertical-align: middle;
+      border-style: none;
+    }
+
+    div {
+      display: block;
+      unicode-bidi: isolate;
+    }
+
+    .nd-img-fluid {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .nd-h2,
+    h2 {
+      font-size: 2rem;
+    }
+
+    .nd-h1,
+    .nd-h2,
+    .nd-h3,
+    .nd-h4,
+    .nd-h5,
+    .nd-h6,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin-bottom: .5rem;
+      font-weight: 500;
+      line-height: 1.2;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin-top: 0;
+      margin-bottom: .5rem;
+    }
+
+    @keyframes zoomIn {
+      0% {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .nd-slideInUp {
+      -webkit-animation-name: slideInUp;
+      animation-name: slideInUp;
+    }
+
+    .nd-experience-the-coolest-world {
+      position: relative;
+    }
+
+    .nd-experience-the-coolest-world-content {
+      position: absolute;
+      top: 4%;
+      padding: 0px;
+      width: 90%;
+    }
+
+    .nd-experience-the-coolest-world-left-content {
+      position: absolute;
+      width: 31%;
+      z-index: 1;
+      top: 0%;
+      left: 70%;
+    }
+
+    .nd-experience-the-coolest-world-bg {
+      background: url('https://waltonbd.com/image/catalog/refrigerator-and-freezer/direct-cool-refrigerator/wfc-3f5-gdne-xx/mobile-view/experience-the-coolest-world-text.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .nd-experience-the-coolest-world-m-content {
+      text-align: center;
+      padding: 30px 20px 20px 20px;
+    }
+
+    .nd-faster-cooling-speed {
+      position: relative;
+    }
+
+    .nd-faster-cooling-speed-content {
+      position: absolute;
+      top: 1%;
+      padding: 0px 0px;
+      width: 100%;
+    }
+
+    .nd-faster-cooling-speed-left-content {
+      position: absolute;
+      top: 1%;
+      padding: 0px 0px;
+      width: 77%;
+      opacity: 0.7;
+      z-index: 1;
+    }
+
+    .nd-animated {
+      -webkit-animation-duration: 1s;
+      animation-duration: 1s;
+      -webkit-animation-fill-mode: both;
+      animation-fill-mode: both;
+    }
+
+    .nd-faster-cooling-speed-bg {
+      background: url('https://waltonbd.com/image/catalog/refrigerator-and-freezer/direct-cool-refrigerator/wfc-3f5-gdne-xx/mobile-view/faster-cooling-speed-text.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .nd-faster-cooling-speed-text-bg {
+      background: url('https://waltonbd.com/image/catalog/refrigerator-and-freezer/direct-cool-refrigerator/wfc-3f5-gdne-xx/desktop-view/faster-cooling-speed.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .nd-faster-cooling-speed-m-content {
+      text-align: center;
+      padding: 30px 20px 20px 20px;
+    }
+
+    .nd-loader {
+      -webkit-animation: spin 3s linear infinite;
+      animation: spin 3s linear infinite;
+    }
+
+    @-webkit-keyframes spin {
+      0% {
+        -webkit-transform: rotate(0deg);
+      }
+
+      100% {
+        -webkit-transform: rotate(360deg);
+      }
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .nd-fresher-food {
+      position: relative;
+    }
+
+    .nd-fresher-food-content {
+      position: absolute;
+      top: 4%;
+      padding: 0px;
+      width: 100%;
+    }
+
+    .nd-fresher-food-text-bg {
+      background: url('https://waltonbd.com/image/catalog/refrigerator-and-freezer/direct-cool-refrigerator/wfc-3f5-gdne-xx/mobile-view/fresher-food-text.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .nd-fresher-food-desktop-bg {
+      background: url('https://waltonbd.com/image/catalog/refrigerator-and-freezer/direct-cool-refrigerator/wfc-3f5-gdne-xx/desktop-view/fresher-food-than-ever.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .nd-fresher-food-m-content {
+      text-align: center;
+      padding: 30px 20px 20px 20px;
+    }
+
+    .nd-glass-door {
+      position: relative;
+    }
+
+    .nd-glass-door-content {
+      position: absolute;
+      top: 1%;
+      padding: 0px;
+      width: 100%;
+    }
+
+    .nd-glass-door-mobile-text-bg {
+      background: url('https://waltonbd.com/image/catalog/refrigerator-and-freezer/direct-cool-refrigerator/wfc-3f5-gdne-xx/mobile-view/glass-door-text.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .nd-glass-door-text-bg {
+      background: url('https://waltonbd.com/image/catalog/refrigerator-and-freezer/direct-cool-refrigerator/wfc-3f5-gdne-xx/desktop-view/real-temper-glass-door-banner.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .nd-glass-door-m-content {
+      text-align: center;
+      padding: 30px 20px 20px 20px;
+    }
+
+    .nd-glass-door-left-content {
+      position: absolute;
+      width: 24%;
+      z-index: 1;
+      top: 9%;
+      left: 60%;
+    }
+
+    .nd-glass-door-right-content {
+      position: absolute;
+      width: 22%;
+      z-index: 2;
+      top: 5%;
+      left: 64%;
+    }
+
+    .nd-clean-air {
+      position: relative;
+    }
+
+    .nd-clean-air-content {
+      position: absolute;
+      top: 4%;
+      padding: 0px;
+      width: 100%;
+    }
+
+    .nd-clean-air-bg {
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .nd-clean-air-1-bg {
+      background: url('https://waltonbd.com/image/catalog/refrigerator-and-freezer/direct-cool-refrigerator/wfc-3f5-gdne-xx/mobile-view/hygenic-clean-air-text.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .nd-clean-air-m-content {
+      text-align: center;
+      padding: 30px 20px 20px 20px;
+    }
+
+    .nd-delay-250ms {
+      -webkit-animation-delay: 250ms;
+      animation-delay: 250ms;
+    }
+
+    .nd-delay-500ms {
+      -webkit-animation-delay: 500ms;
+      animation-delay: 500ms;
+    }
+
+    .nd-delay-700ms {
+      -webkit-animation-delay: 700ms;
+      animation-delay: 700ms;
+    }
+
+    .nd-delay-900ms {
+      -webkit-animation-delay: 900ms;
+      animation-delay: 900ms;
+    }
+
+    .nd-experience-the-coolest-world-m-content {
+      text-align: center;
+      padding: 30px 20px 20px 20px;
+    }
+
+    .nd-uk-h1,
+    h1 {
+      font-size: 2.23125rem;
+      line-height: 1.2;
+    }
+
+    .nd-h3,
+    h3 {
+      font-size: 1.75rem;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin-top: 0;
+      margin-bottom: .5rem;
+    }
+
+    .nd-uk-h3,
+    h3 {
+      line-height: 1.4;
+    }
+
+    .nd-h1,
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    .nd-h4,
+    h4 {
+      font-size: 1.5rem;
+    }
+
+    .nd-h3,
+    h3 {
+      font-size: 1.75rem;
+    }
+
+    .nd-h1,
+    .nd-h2,
+    .nd-h3,
+    .nd-h4,
+    .nd-h5,
+    .nd-h6,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin-bottom: .5rem;
+      font-weight: 500;
+      line-height: 1.2;
+    }
+
+
+    @media (min-width: 960px) {
+
+      .nd-uk-h1,
+      h1 {
+        font-size: 2.625rem;
+      }
+    }
+
+
+    .nd-coolest-world {
+      position: relative;
+    }
+
+    .nd-coolest-world-content {
+      position: absolute;
+      top: 4%;
+      padding: 0px;
+      width: 90%;
+    }
+
+    .nd-coolest-world-left-content {
+      position: absolute;
+      width: 31%;
+      z-index: 1;
+      top: 0%;
+      left: 70%;
+    }
+
+    .nd-coolest-world-m-content {
+      text-align: center;
+      padding: 30px 20px 20px 20px;
+    }
+
+    .nd-plenty-of-storage {
+      position: relative;
+    }
+
+    .nd-plenty-of-storage-content {
+      position: absolute;
+      top: 4%;
+      padding: 0px;
+      width: 100%;
+    }
+
+    .nd-glass-door {
+      position: relative;
+    }
+
+    .nd-glass-door-content {
+      position: absolute;
+      top: 1%;
+      padding: 0px;
+      width: 100%;
+    }
+
+    .nd-glass-door-left-content {
+      position: absolute;
+      width: 52%;
+      z-index: 1;
+      top: 9%;
+      left: 48%;
+    }
+
+    .nd-glass-door-zoom-content {
+      position: absolute;
+      width: 25%;
+      z-index: 1;
+      top: 45%;
+      left: 20%;
+    }
+
+    .nd-compressor-for-inverter-purpose {
+      position: relative;
+    }
+
+    .nd-compressor-for-inverter-purpose-content {
+      position: absolute;
+      top: 4%;
+      padding: 0px;
+      width: 100%;
+    }
+
+    .nd-faster-cooling-speed-m-content {
+      text-align: center;
+      padding: 30px 20px 20px 20px;
+    }
+
+    .nd-faster-cooling-speed-text-bg {
+      background: url(https://waltonbd.com/image/catalog/refrigerator-and-freezer/direct-cool-refrigerator/wfc-3f5-gdel-xx-inverter/mobile-view/faster-cooling-speed-text.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .nd-coolest-world-bg {
+      background: url(https://waltonbd.com/image/catalog/refrigerator-and-freezer/direct-cool-refrigerator/wfc-3f5-gdel-xx-inverter/mobile-view/experience-the-coolest-world-text.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .nd-plenty-of-storage-m-content {
+      text-align: center;
+      padding: 30px 20px 20px 20px;
+    }
+
+    .nd-plenty-of-storage-bg {
+      background: url(https://waltonbd.com/image/catalog/refrigerator-and-freezer/direct-cool-refrigerator/wfc-3f5-gdel-xx-inverter/mobile-view/plenty-of-storage-text.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .nd-glass-door-m-content {
+      text-align: center;
+      padding: 30px 20px 20px 20px;
+    }
+
+    .nd-glass-door-text-bg {
+      background: url(https://waltonbd.com/image/catalog/refrigerator-and-freezer/direct-cool-refrigerator/wfc-3f5-gdel-xx-inverter/mobile-view/glass-door-text.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .nd-compressor-for-inverter-purpose-text-bg {
+      background: url(https://waltonbd.com/image/catalog/refrigerator-and-freezer/direct-cool-refrigerator/compressor-feature/mobile-view/compressor-text.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .nd-compressor-for-inverter-purpose-m-content {
+      text-align: center;
+      padding: 30px 20px 20px 20px;
+    }
+
+    /* style for specification tab start */
+
+    .nd-container-fluid {
+      width: 100%;
+      padding-right: 15px;
+      padding-left: 15px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    .nd-list-group {
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      padding-left: 0;
+      margin-bottom: 0;
+      font-family: Titillium Web;
+    }
+
+    .nd-table {
+      width: 100%;
+      margin-bottom: 1rem;
+      color: #212529;
+      border-collapse: collapse;
+      /* Moved from table tag */
+    }
+
+    .nd-thead {
+      display: table-header-group;
+      vertical-align: middle;
+      unicode-bidi: isolate;
+      border-color: inherit;
+    }
+
+    .nd-tr {
+      display: table-row;
+      vertical-align: inherit;
+      unicode-bidi: isolate;
+      border-color: inherit;
+    }
+
+    .nd-th {
+      text-align: inherit;
+      vertical-align: bottom;
+      padding: .75rem;
+      border-bottom: 1px solid #dee2e6;
+    }
+
+    .nd-td {
+      display: table-cell;
+      vertical-align: inherit;
+      unicode-bidi: isolate;
+      padding: .75rem;
+      vertical-align: top;
+      border-top: 1px solid #dee2e6;
+    }
+
+    .nd-tbody {
+      display: table-row-group;
+      vertical-align: middle;
+      unicode-bidi: isolate;
+      border-color: inherit;
+    }
+
+    .nd-table-striped .nd-tbody .nd-tr:nth-of-type(odd) {
+      background-color: rgba(0, 0, 0, .05);
+    }
+
+    @media (min-width: 1825px) and (max-width: 1920px) {
+      .nd-container-fluid {
+        max-width: 70%;
+      }
+    }
+
+    @media (min-width: 320px) and (max-width: 480px) {
+      .nd-container-fluid {
+        padding-right: 5px;
+        padding-left: 5px;
+        overflow: hidden;
+      }
+    }
+
+    /* style for specification tab end */
+
+    /* style for download tab start  */
+
+
+    .nd-mt-4,
+    .nd-my-4 {
+      margin-top: 1.5rem !important;
+    }
+
+
+    @media (min-width: 576px) {
+      .nd-card-group {
+        -ms-flex-flow: row wrap;
+        flex-flow: row wrap;
+      }
+
+      .nd-card-group>.nd-card:not(:last-child) {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+
+      .nd-card-group>.nd-card {
+        -ms-flex: 1 0 0%;
+        flex: 1 0 0%;
+        margin-bottom: 0;
+      }
+    }
+
+
+    .nd-card-group>.nd-card {
+      margin-bottom: 15px;
+    }
+
+    .nd-card {
+      border: 0 solid;
+      position: relative;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      min-width: 0;
+      word-wrap: break-word;
+      background-color: #fff;
+      background-clip: border-box;
+      border: 1px solid rgba(0, 0, 0, .125);
+      border-radius: .25rem;
+    }
+
+
+    .nd-link {
+      color: #007bff;
+      text-decoration: none !important;
+      background-color: transparent;
+    }
+
+    .nd-uk-link,
+    .nd-link {
+      color: #1e87f0;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+
+    .nd-card-body {
+      -ms-flex: 1 1 auto;
+      flex: 1 1 auto;
+      padding: 1.25rem;
+    }
+
+
+    .nd-ceiling-text-box {
+      background: linear-gradient(#1b5964, #1b5964 50%, #252525 50%, #1b5964);
+      background-size: 100% 200%;
+      transition: background 1s;
+    }
+
+    .nd-duct-text-box {
+      background: linear-gradient(#165179, #165179 50%, #252525 50%, #165179);
+      background-size: 100% 200%;
+      transition: background 1s;
+    }
+
+
+    .nd-text {
+      color: #fff;
+      line-height: 0.8;
+    }
+
+
+    .nd-card-title {
+      margin-bottom: .75rem;
+    }
+
+
+    .nd-h4 {
+      font-size: 1.5rem;
+    }
+
+    .nd-h1,
+    .nd-h2,
+    .nd-h3,
+    .nd-h4,
+    .nd-h5,
+    .nd-h6 {
+      margin-bottom: .5rem;
+      font-weight: 500;
+      line-height: 1.2;
+    }
+
+    .nd-sub-title {
+      font-size: 1rem;
+      font-weight: 400;
+    }
+
+
+    /* style for download tab end  */
+  </style> -->
+</head>
+
+<body>
+
+
+
+  <div class="nd-content">
+    <div class="desktop-show">
+      <div class="nd-tabs">
+        <a href="#nd-features" class="nd-tab-link active" data-tab="nd-features">Features</a>
+        <a href="#nd-technical-specification" class="nd-tab-link" data-tab="nd-technical-specification">Technical
+          Specification</a>
+        <a href="#nd-picture-gallery" class="nd-tab-link" data-tab="nd-picture-gallery">Picture Gallery</a>
+        <a href="#nd-video-tutorial" class="nd-tab-link" data-tab="nd-video-tutorial">Video Tutorial</a>
+        <a href="#nd-supports" class="nd-tab-link" data-tab="nd-supports">Supports</a>
+        <a href="#nd-downloads" class="nd-tab-link" data-tab="nd-downloads">Downloads</a>
+      </div>
+    </div>
+
+    <div class="mobile-show">
+      <div class="nd-tabs-m">
+        <a href="#nd-features" class="nd-tab-link active" data-tab="nd-features">Features</a>
+        <a href="#nd-technical-specification" class="nd-tab-link" data-tab="nd-technical-specification">Technical
+          Specification</a>
+        <a href="#nd-picture-gallery" class="nd-tab-link" data-tab="nd-picture-gallery">Picture Gallery</a>
+        <a href="#nd-video-tutorial" class="nd-tab-link" data-tab="nd-video-tutorial">Video Tutorial</a>
+        <a href="#nd-supports" class="nd-tab-link" data-tab="nd-supports">Supports</a>
+        <a href="#nd-downloads" class="nd-tab-link" data-tab="nd-downloads">Downloads</a>
+      </div>
+    </div>
+
+    <div>
+      <div id="nd-features" class="nd-tab-content active">
+
+        <section id="part-meet-the-supreme">
+          <div class="desktop-show part-meet-the-supreme ">
+            <img
+              src="https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/desktop-view/meet-the-supreme-background.webp"
+              alt="" title="" class="img-fluid d-block mx-auto">
+            <div class="part-meet-the-supreme-content">
+              <div class="row">
+                <div class="col-4 delay-900ms wow  zoomIn animated"
+                  style="visibility: visible; animation-name: zoomIn;">
+                  <img
+                    src="https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/desktop-view/meet-the-supreme-refrigerator.webp"
+                    alt="" title=""
+                    class="img-fluid part-meet-the-supreme-left-content cus_div_style image-zoom-effect d-block mx-auto">
+                </div>
+                <div class="col-8 wow  zoomIn animated" style="visibility: visible; animation-name: zoomIn;">
+                  <h4 class="cus_div_style wow bounce"
+                    style="color: rgb(255, 255, 255); font-weight: 400; text-shadow: rgb(0, 0, 0) 0px 2px 0px, rgb(0, 0, 0) 0px 2px 0px; text-align: left; font-size: 2.1rem; padding: 29% 0px 0px 6%; line-height: 0.2; visibility: visible; animation-name: bounce;">
+                    MEET THE
+                  </h4>
+                  <img class="part-meet-the-supreme-right-content d-block mx-auto"
+                    style="padding: 2% 0 0 6%; line-height: 1.2;"
+                    src="https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/desktop-view/supreme.png"
+                    alt="" title="">
+                  <h4 class="cus_div_style wow bounceInUp"
+                    style="color: rgb(0, 0, 0); font-weight: 700; text-align: left; font-size: 1.8rem; padding: 10% 0px 0px 6%; line-height: 1.2; visibility: visible; animation-name: bounceInUp;">
+                    <span class="bigger-better-smarter">BIGGER</span> <span class="bigger-better-smarter">BETTER</span>
+                    <span class="bigger-better-smarter">SMARTER</span>
+                  </h4>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mobile-show part-meet-the-supreme-m">
+            <div class="part-meet-the-supreme-m-content meet-the-supreme-2-1-bg">
+              <h4
+                style="color:#ffffff;font-weight:400;text-shadow: 0 2px 0 #000000, 0 2px 0 #000000;font-size: 2.1rem;">
+                MEET THE</h4>
+              <img
+                src="https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/desktop-view/supreme.png"
+                alt="" title="" class="d-block mx-auto">
+              <h4 style="color:#000; font-weight:700;line-height:2.1;">
+                <span class="bigger-better-smarter">BIGGER</span> <span class="bigger-better-smarter">BETTER</span>
+                <span class="bigger-better-smarter">SMARTER</span>
+              </h4>
+            </div>
+            <img
+              src="https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/mobile-view/supreme.jpg"
+              alt="" title="" class="img-fluid d-block mx-auto">
+          </div>
+        </section>
+
+        <section id="part-6a9">
+          <div class="desktop-show part-6a9">
+            <img
+              src="https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/desktop-view/6a9-background.png"
+              alt="" title="" class="img-fluid d-block mx-auto">
+            <div class="part-6a9-content">
+              <div class="row">
+                <div class="col-12 wow  zoomIn animated" style="visibility: visible; animation-name: zoomIn;">
+                  <img class="wow  zoomIn image-zoom-effect d-block mx-auto"
+                    style="padding: 11% 0px 0px 0%; width: 31%; line-height: 1.2; visibility: visible; animation-name: zoomIn;"
+                    src="https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/desktop-view/6a9-logo.png"
+                    alt="" title="">
+                  <img class="wow  zoomIn image-zoom-effect d-block mx-auto"
+                    style="padding: 12% 0px 0px 0%; width: 67%; line-height: 1.2; visibility: visible; animation-name: zoomIn;"
+                    src="https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/desktop-view/6a9-technology-logo.png"
+                    alt="" title="">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mobile-show part-6a9-m">
+            <img
+              src="https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/mobile-view/6a9.jpg"
+              alt="" class="img-fluid d-block mx-auto">
+          </div>
+        </section>
+
+        <section id="part-super-freezing">
+          <div class="desktop-show part-super-freezing">
+            <img
+              src="https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/desktop-view/super-freezing.png"
+              alt="" title="" class="img-fluid d-block mx-auto">
+            <div class="part-super-freezing-content">
+              <div class="row">
+                <div class="col-5 wow  zoomIn animated" style="visibility: visible; animation-name: zoomIn;">
+                  <h2 class="nd-h2"
+                    style="color:#ffffff; padding: 38% 0 0 16%; font-weight:500;text-align:left;font-size: 1.4rem; line-height: 0.2;">
+                    SUPER FREEZING
+                  </h2>
+                  <p class="nd-p" style="color:#ffffff; padding: 1% 0 0 16%; text-align:left; line-height: 1.4;">Its
+                    advanced
+                    cooling technology provides maximum cooling for<br> better preservation. It has a unique balanced
+                    cooling system that<br> keeps all your food as fresh as you desire.
+                  </p>
+                  <h2 class="nd-h2"
+                    style="color:#ffffff; padding: 5% 0 0 16%; font-weight:500;text-align:left;font-size: 1.4rem; line-height: 0.2;">
+                    ECO MODE
+                  </h2>
+                  <p class="nd-p" style="color:#ffffff; padding: 1% 0 0 16%; text-align:left;line-height: 1.4;">
+                    This advanced technology provides the privilege of maximum<br> refrigeration with minimal energy
+                    consumption. It retains optimal<br> temperature to keep food fresh during irregular use.
+                  </p>
+                  <div class="row">
+                    <div class="col-2">
+                    </div>
+                    <div class="col-3 wow animated zoomIn image-zoom-effect"
+                      style="visibility: visible; animation-name: none;">
+                      <img style="padding: 90% 0 0 0; width:100%; line-height: 1.2;"
+                        src="https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/desktop-view/super-freezing-logo.png"
+                        alt="" title="" class="img-fluid d-block mx-auto">
+                    </div>
+                    <div class="col-3 wow animated zoomIn image-zoom-effect"
+                      style="visibility: visible; animation-name: none;">
+                      <img style="padding: 90% 0 0 0; width:100%; line-height: 1.2;"
+                        src="https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/desktop-view/eco-mode-logo.png"
+                        alt="" title="" class="img-fluid d-block mx-auto">
+                    </div>
+                    <div class="col-3">
+                    </div>
+                    <div class="col-1">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-7">
+                  <img class="cus_div_style image-zoom-effect jello d-block mx-auto"
+                    style="padding: 18% 5% 0 0; width:86%; line-height: 1.2; opacity: 0.7;"
+                    src="https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/desktop-view/air.png"
+                    alt="" title="">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mobile-show part-super-freezing-m">
+            <div class="part-super-freezing-m-content super-freezing-1-bg">
+              <h4 style="color:#ffffff;font-weight:900;">SUPER FREEZING</h4>
+              <p style="color:#ffffff;">
+                This advanced technology provides the privilege of maximum refrigeration with minimal energy
+                consumption. It retains optimal temperature to keep food fresh during irregular use.
+              </p><br>
+              <h4 style="color:#ffffff;font-weight:900;">ECO MODE
+              </h4>
+              <p style="color:#ffffff;">
+                This advanced technology provides the privilege of maximum refrigeration with minimal energy
+                consumption. It retains optimal temperature to keep food fresh during irregular use.
+              </p>
+            </div>
+            <img
+              src="https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/mobile-view/super-freezing.jpg"
+              alt="" title="" class="img-fluid d-block mx-auto">
+          </div>
+        </section>
+
+        <section id="part-digital-display">
+          <div class="desktop-show part-digital-display ">
+            <img
+              src="https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/desktop-view/digital-display-background.webp"
+              alt="" title="" class="img-fluid d-block mx-auto">
+            <div class="part-digital-display-content">
+              <div class="row">
+                <div class="col-6 ">
+                  <h4 class="cus_div_style wow bounceInUp animated nd-h4"
+                    style="color: rgb(0, 0, 0); font-weight: 700; text-align: left; font-size: 1.8rem; padding: 14% 0px 0px 21%; line-height: 1.2; visibility: visible; animation-name: bounceInUp;">
+                    <span class="digital">DIGITAL </span><span class="display">DISPLAY</span>
+                  </h4>
+                  <p class="nd-p" style="color:#ffffff; padding: 12% 0 0 21%; text-align:left; line-height: 1.4;">Its
+                    impeccable
+                    digital display, a touch of elegance that makes the<br> control ease and saves energy as well. You
+                    can easily change the<br> temperature settings for faster cooling or regular freezing.
+                  </p>
+                  <img class="part-digital-display-left-content wow bounceInUp animated d-block mx-auto"
+                    style="padding: 64% 0px 0px 21%; width: 99%; line-height: 1.2; visibility: visible; animation-name: bounceInUp;"
+                    src="https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/desktop-view/refrigerator-with-digital-display.webp"
+                    alt="" title="">
+                </div>
+                <div class="col-6 wow delay-1400ms fadeInLeft image-zoom-effect animated"
+                  style="visibility: visible; animation-name: fadeInLeft;">
+                  <img class="part-digital-display-right-content d-block mx-auto"
+                    style="padding: 12% 0 0 19%; width:96%; line-height: 1.2;"
+                    src="https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/desktop-view/digital-display-with-highlighted.webp"
+                    alt="" title="">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mobile-show part-digital-display-m">
+            <div class="part-digital-display-m-content digital-display-1-bg">
+              <h4 style="color:#000; font-weight:700;">
+                <span class="digital">DIGITAL </span><span class="display">DISPLAY</span>
+              </h4>
+              <p style="color:#ffffff;">Its impeccable digital display, a touch of elegance that makes the control ease
+                and saves energy as well. You can easily change the temperature settings for faster cooling or regular
+                freezing.
+              </p>
+            </div>
+            <img
+              src="https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/mobile-view/digital-display.jpg"
+              alt="" title="" class="img-fluid d-block mx-auto">
+          </div>
+        </section>
+
+        <section id="part-big-storage">
+          <div class="desktop-show part-big-storage ">
+            <img
+              src="https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/desktop-view/big-storage-background.webp"
+              alt="" title="" class="img-fluid d-block mx-auto">
+            <div class="part-big-storage-content">
+              <div class="row">
+                <div class="col-6">
+                  <h4 class="cus_div_style wow bounceInUp animated nd-h4"
+                    style="color: rgb(0, 0, 0); font-weight: 700; text-align: left; font-size: 1.8rem; padding: 9% 0px 0px 7%; line-height: 1.2; visibility: visible; animation-name: bounceInUp;">
+                    <span class="display">BIG</span><span> STORAGE</span>
+                  </h4>
+                  <p class="nd-p" style="color:#000000; padding: 5% 0 0 7%; text-align:left; line-height: 1.4;">It has a
+                    large
+                    storage capacity which<br>
+                    gives you the freedom to store more<br>
+                    so you can skip the hassle of going<br>
+                    to the market daily but will never<br>
+                    miss having fresh food.
+                  </p>
+                </div>
+                <div class="col-6 wow delay-1500ms part-big-storage-right-content " style="visibility: visible;">
+                  <div class="row">
+                    <div class="col-6 wow  zoomIn image-zoom-effect animated"
+                      style="visibility: visible; animation-name: zoomIn;">
+                      <img style="line-height: 1.2;"
+                        src="https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/desktop-view/mega-capacity-logo.png"
+                        alt="" title="" class="img-fluid d-block mx-auto">
+                    </div>
+                    <div class="col-6 wow  zoomIn image-zoom-effect animated"
+                      style="visibility: visible; animation-name: zoomIn;">
+                      <img style="line-height: 1.2;"
+                        src="https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/desktop-view/big-storage-logo.png"
+                        alt="" title="" class="img-fluid d-block mx-auto">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mobile-show part-big-storage-m">
+            <div class="part-big-storage-m-content big-storage-1-bg">
+              <h4 style="color:#000; font-weight:700;">
+                <span class="display">BIG</span><span> STORAGE</span>
+              </h4>
+              <p style="color:#000000;">It has a large storage capacity which
+                gives you the freedom to store more
+                so you can skip the hassle of going
+                to the market daily but will never
+                miss having fresh food.
+              </p>
+            </div>
+            <img
+              src="https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/mobile-view/big-storage.jpg"
+              alt="" title="" class="img-fluid d-block mx-auto">
+          </div>
+        </section>
+
+        <section id="part-real-tempered-glass-door">
+          <div class="desktop-show part-real-tempered-glass-door ">
+            <img
+              src="https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/desktop-view/real-tempered-glass-door-background.webp"
+              alt="" title="" class="img-fluid d-block mx-auto">
+            <div class="part-real-tempered-glass-door-content">
+              <div class="row">
+                <div class="col-6 wow  zoomIn delay-1500ms animated"
+                  style="visibility: visible; animation-name: zoomIn;">
+                  <img class="wow  zoomIn image-zoom-effect d-block mx-auto"
+                    style="width: 69%; padding: 8% 0px 0px 11%; visibility: visible; animation-name: zoomIn;"
+                    src="https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/desktop-view/tempered-glass-door-refrigerator.webp"
+                    alt="" title="">
+                </div>
+                <div class="col-6">
+                  <h4 class="cus_div_style wow bounceInUp animated nd-h4"
+                    style="color: rgb(0, 0, 0); font-weight: 700; text-align: left; font-size: 1.9rem; padding: 23% 0px 0px 7%; line-height: 1.2; visibility: visible; animation-name: bounceInUp;">
+                    <span>REAL </span><span class="display"> TEMPERED</span>
+                  </h4>
+                  <h5 class="cus_div_style wow bounceInUp animated nd-h5"
+                    style="color: rgb(0, 0, 0); font-weight: 500; text-align: left; font-size: 1.8rem; padding: 0px 0px 0px 7%; line-height: 0.7; visibility: visible; animation-name: bounceInUp;">
+                    GLASS DOOR
+                  </h5>
+                  <h6 class="cus_div_style wow bounceInUp animated nd-h6"
+                    style="color: rgb(0, 52, 99); font-weight: 500; text-align: left; font-size: 1.2rem; padding: 2% 0px 0px 7%; line-height: 0.9; visibility: visible; animation-name: bounceInUp;">
+                    More Durable
+                  </h6>
+                  <p class="nd-p" style="color:#000000; padding: 6% 0 22% 7%; text-align:left; line-height: 1.4;">The
+                    exquisite Real
+                    Tempered Glass Door, its sleek and elegant look<br> adds a real sophistication to your home decor.
+                  </p>
+                  <div class="row">
+                    <div class="col-6">
+                    </div>
+                    <div class="col-3 wow animated zoomIn image-zoom-effect"
+                      style="visibility: visible; animation-name: zoomIn;">
+                      <img style="line-height: 1.2;padding: 67% 0 0 0; width:87%;"
+                        src="https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/desktop-view/scratch-resistant.png"
+                        alt="" title="" class="d-block mx-auto">
+                    </div>
+                    <div class="col-3 wow animated zoomIn image-zoom-effect"
+                      style="visibility: visible; animation-name: zoomIn;">
+                      <img style="line-height: 1.2;padding: 67% 0 0 0; width:87%;"
+                        src="https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/desktop-view/shine-and-colorful.png"
+                        alt="" title="" class="d-block mx-auto">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mobile-show part-real-tempered-glass-door-m">
+            <div class="part-real-tempered-glass-door-m-content real-tempered-glass-door-1-bg">
+              <h4 style="color:#000; font-weight:700;">
+                <span>REAL </span><span class="display"> TEMPERED</span>
+              </h4>
+              <h5 style="color:#000; font-weight:500;">GLASS DOOR</h5>
+              <h6 style="color:#000; font-weight:500;">More Durable</h6>
+              <p style="color:#000;">The exquisite Real Tempered Glass Door, its sleek and elegant look adds a real
+                sophistication to your home decor.
+              </p>
+            </div>
+            <img
+              src="https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/mobile-view/real-tempered-glass-door.jpg"
+              alt="" title="" class="img-fluid d-block mx-auto">
+          </div>
+        </section>
+
+        <section id="part-child-lock">
+          <div class="desktop-show part-child-lock ">
+            <img
+              src="https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/desktop-view/child-lock-background.webp"
+              alt="" title="" class="img-fluid d-block mx-auto">
+            <div class="part-child-lock-content">
+              <div class="row">
+                <div class="col-6 ">
+                  <h4 class="cus_div_style wow bounceInUp animated nd-h4"
+                    style="color: rgb(0, 0, 0); font-weight: 700; text-align: left; font-size: 1.8rem; padding: 14% 0px 0px 21%; line-height: 1.2; visibility: visible; animation-name: bounceInUp;">
+                    <span class="child">CHILD</span><span class="lock"> LOCK</span>
+                  </h4>
+                  <p class="nd-p" style="color:#ffffff; padding: 2% 0 0 21%; text-align:left; line-height: 1.4;">After
+                    using the
+                    Child Lock function, kids will not be able to change the control panel settings of the refrigerator.
+                    This helps to avoid any kind of accidental settings changes in the control panel. You can activate
+                    or deactivate it by pressing it for 3 seconds.
+                  </p>
+                  <img class="part-child-lock-left-content wow bounceInUp animated image-zoom-effect d-block mx-auto"
+                    style="padding: 83% 0px 0px 21%; width: 38%; line-height: 1.2; visibility: visible; animation-name: bounceInUp;"
+                    src="https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/desktop-view/child-lock.png"
+                    alt="" title="">
+                </div>
+                <div class="col-6">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mobile-show part-child-lock-m">
+            <div class="part-child-lock-m-content child-lock-1-bg">
+              <h4 style="color:#000; font-weight:700;">
+                <span class="child">CHILD</span><span class="lock"> LOCK</span>
+              </h4>
+              <p style="color:#ffffff;">After using the Child Lock function, kids will not be able to change the control
+                panel settings of the refrigerator. This helps to avoid any kind of accidental settings changes in the
+                control panel. You can activate or deactivate it by pressing it for 3 seconds.
+              </p>
+            </div>
+            <img
+              src="https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/mobile-view/child-lock.jpg"
+              alt="" title="" class="img-fluid d-block mx-auto">
+          </div>
+        </section>
+
+        <section id="part-wide-voltage-design">
+          <div class="desktop-show part-wide-voltage-design ">
+            <img
+              src="https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/desktop-view/wide-voltage-design-background.webp"
+              alt="" title="" class="img-fluid d-block mx-auto">
+            <div class="part-wide-voltage-design-content">
+              <div class="row">
+                <div class="col-6 wow  zoomIn delay-1500ms animated"
+                  style="visibility: visible; animation-name: zoomIn;">
+                  <img class="wow  zoomIn image-zoom-effect animated d-block mx-auto"
+                    style="width: 73%; padding: 31% 0px 0px 51%; visibility: visible; animation-name: zoomIn;"
+                    src="https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/desktop-view/thunder.png"
+                    alt="" title="">
+                </div>
+                <div class="col-6">
+                  <h4 class="cus_div_style wow bounceInUp animated"
+                    style="color: rgb(0, 0, 0); font-weight: 700; text-align: left; font-size: 1.9rem; padding: 23% 0px 0px 7%; line-height: 1.2; visibility: visible; animation-name: bounceInUp;">
+                    <span class="display">WIDE VOLTAGE</span><span> DESIGN </span>
+                  </h4>
+                  <p class="nd-p" style="color:#fff; padding: 6% 0 22% 7%; text-align:left; line-height: 1.4;">
+                    Compatible with a
+                    range from 85 to 280 Volt which helps protect the fridge from unsafe fluctuation of voltage as well
+                    as overvoltage.
+                  </p>
+                  <div class="row">
+                    <div class="col-6">
+                    </div>
+                    <div class="col-3 wow  zoomIn image-zoom-effect animated"
+                      style="visibility: visible; animation-name: zoomIn;">
+                      <img style="line-height: 1.2;padding: 67% 0 0 0; width:87%;"
+                        src="https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/desktop-view/wide-voltage-range.png"
+                        alt="" title="" class="d-block mx-auto">
+                    </div>
+                    <div class="col-3 wow  zoomIn image-zoom-effect animated"
+                      style="visibility: visible; animation-name: zoomIn;">
+                      <img style="line-height: 1.2;padding: 67% 0 0 0; width:87%;"
+                        src="https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/desktop-view/ovp.png"
+                        alt="" title="" class="d-block mx-auto">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mobile-show part-wide-voltage-design-m">
+            <div class="part-wide-voltage-design-m-content wide-voltage-design-1-bg">
+              <h4 style="color:#000; font-weight:700;">
+                <span class="display">WIDE VOLTAGE</span><span> DESIGN </span>
+              </h4>
+              <p style="color:#fff;">Compatible with a range from 85 to 280 Volt which helps protect the fridge from
+                unsafe fluctuation of voltage as well as overvoltage.
+              </p>
+            </div>
+            <img
+              src="https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/mobile-view/wide-voltage-design.jpg"
+              alt="" title="" class="img-fluid d-block mx-auto">
+          </div>
+        </section>
+
+        <section id="part-intelligent-germ-terminator">
+          <div class="desktop-show part-intelligent-germ-terminator ">
+            <img class="img-fluid d-block mx-auto"
+              src="https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/desktop-view/intelligent-germ-terminator-background.webp"
+              alt="" title="">
+            <div class="part-intelligent-germ-terminator-content">
+              <div class="row">
+                <div class="col-8">
+                  <h4 class="cus_div_style wow bounceInUp animated nd-h4"
+                    style="color: rgb(0, 0, 0); font-weight: 700; text-align: left; font-size: 1.9rem; padding: 14% 0px 0px 16%; line-height: 1.2; visibility: visible; animation-name: bounceInUp;">
+                    <span class="display">INTELLIGENT</span><span> GERM TERMINATOR</span>
+                  </h4>
+                  <p class="nd-p" style="color:#000; padding: 2% 0 0 16%; text-align:left; line-height: 1.4;">IGT
+                    terminates the
+                    harmful bacteria from the refrigerator cabinet thus keeps the<br> foods fresh inside the
+                    refrigerator.
+                  </p>
+                </div>
+                <div class="col-4 wow  zoomIn delay-1500ms part-intelligent-germ-terminator-right-content animated"
+                  style="visibility: visible; animation-name: zoomIn;">
+                  <img class="img-fluid wow  zoomIn image-zoom-effect d-block mx-auto"
+                    style="padding: 92% 0px 0px 73%; width: 100%; visibility: visible; animation-name: zoomIn;"
+                    src="https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/desktop-view/igt.png"
+                    alt="" title="">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mobile-show part-intelligent-germ-terminator-m">
+            <div class="part-intelligent-germ-terminator-m-content intelligent-germ-terminator-1-bg">
+              <h4 style="color:#000; font-weight:700;">
+                <span class="display">INTELLIGENT</span><span> GERM TERMINATOR</span>
+              </h4>
+              <p style="color:#000;">IGT terminates the harmful bacteria from the refrigerator cabinet thus keeps the
+                foods fresh inside the refrigerator.
+              </p>
+            </div>
+            <img
+              src="https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/mobile-view/igt.jpg"
+              alt="" title="" class="img-fluid d-block mx-auto">
+          </div>
+        </section>
+
+        <section id="part-iot">
+          <div class="desktop-show part-iot ">
+            <img class="img-fluid d-block mx-auto"
+              src="https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/desktop-view/iot-background.webp"
+              alt="" title="">
+            <div class="part-iot-content">
+              <div class="row">
+                <div class="col-8">
+                  <h4 class="cus_div_style wow bounceInUp animated nd-h4"
+                    style="color: rgb(0, 0, 0); font-weight: 700; text-align: left; font-size: 1.9rem; padding: 63% 0px 0px 16%; line-height: 0.7; visibility: visible; animation-name: bounceInUp;">
+                    <span class="display">INTERNET</span><span class="lock"> OF THINGS</span>
+                  </h4>
+                  <p class="nd-p" style="color:#fff; padding: 2% 0 0 16%; text-align:left; line-height: 1.1;">lot
+                    enables the
+                    customer to control the refrigerator with smartphone from anywhere of the world.
+                  </p>
+                </div>
+                <div class="col-4 wow  zoomIn delay-1500ms part-iot-right-content image-zoom-effect animated"
+                  style="visibility: visible; animation-name: zoomIn;">
+                  <img class="img-fluid d-block mx-auto" style="padding: 92% 0 0 73%; width:100%;"
+                    src="https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/desktop-view/iot.png"
+                    alt="" title="">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mobile-show part-iot-m">
+            <img
+              src="https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/mobile-view/iot.jpg"
+              alt="" title="" class="img-fluid d-block mx-auto">
+            <div class="part-iot-m-content iot-1-bg">
+              <h4 style="color:#000; font-weight:700;">
+                <span class="display">INTERNET</span><span class="lock"> OF THINGS</span>
+              </h4>
+              <p style="color:#fff;">lot enables the customer to control the refrigerator with smartphone from anywhere
+                of the world.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="part-dual-control">
+          <div class="desktop-show part-dual-control ">
+            <img class="img-fluid d-block mx-auto"
+              src="https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/desktop-view/dual-control-background.webp"
+              alt="" title="">
+            <div class="part-dual-control-content">
+              <div class="row">
+                <h4 class="cus_div_style wow bounceInUp animated nd-h4"
+                  style="color: rgb(0, 0, 0); font-weight: 700; text-align: left; font-size: 1.9rem; padding: 37% 0px 0px 16%; line-height: 0.7; visibility: visible; animation-name: bounceInUp;">
+                  <span class="display">DUAL</span><span> CONTROL</span>
+                </h4>
+                <p class="nd-p" style="color:#fff; padding: 1% 0 0 16%; text-align:left; line-height: 1.1;">Dual Control
+                  ensures
+                  setting temperature of both cabinet individually so that users can set both cabinet temperature as per
+                  their requirement.
+                </p>
+              </div>
+              <div class="row">
+                <div class="col-8">
+                </div>
+                <div class="col-4 wow  zoomIn delay-1500ms part-dual-control-right-content image-zoom-effect animated"
+                  style="visibility: visible; animation-name: zoomIn;">
+                  <img class="img-fluid d-block mx-auto" style="padding: 4% 0 0 73%; width:100%;"
+                    src="https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/desktop-view/dual-control.png"
+                    alt="" title="">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mobile-show part-dual-control-m">
+            <div class="part-dual-control-m-content dual-control-1-bg">
+              <h4 style="color:#000;font-weight:700;">
+                <span class="display">DUAL</span><span> CONTROL</span>
+              </h4>
+              <p style="color:#fff;">Dual Control ensures setting temperature of both cabinet individually so that users
+                can set both cabinet temperature as per their requirement.
+              </p>
+            </div>
+            <img
+              src="https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/mobile-view/dual-control.jpg"
+              alt="" title="" class="img-fluid d-block mx-auto">
+          </div>
+        </section>
+
+        <section id="part-holiday-mode">
+          <div class="desktop-show part-holiday-mode ">
+            <img class="img-fluid d-block mx-auto"
+              src="https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/desktop-view/holiday-mode-background.webp"
+              alt="" title="">
+            <div class="part-holiday-mode-content">
+              <div class="row">
+                <div class="col-8">
+                  <h4 class="cus_div_style wow bounceInUp animated nd-h4"
+                    style="color: rgb(0, 0, 0); font-weight: 700; text-align: left; font-size: 1.9rem; padding: 40% 0px 0px 16%; line-height: 0.7; visibility: visible; animation-name: bounceInUp;">
+                    <span class="display">HOLIDAY</span><span> MODE<span>
+                      </span></span>
+                  </h4>
+                  <p class="nd-p" style="color:#000; padding: 2% 0 0 16%; text-align:left; line-height: 1.1;">In holiday
+                    mode, only
+                    freezer compartment stays active and fridge compartment remains idle.
+                  </p>
+                </div>
+                <div class="col-4 wow  zoomIn delay-1500ms part-holiday-mode-right-content animated"
+                  style="visibility: visible; animation-name: zoomIn;">
+                  <img class="img-fluid wow  zoomIn image-zoom-effect d-block mx-auto"
+                    style="padding: 92% 0px 0px 73%; width: 100%; visibility: visible; animation-name: zoomIn;"
+                    src="https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/desktop-view/holiday-mode.png"
+                    alt="" title="">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mobile-show part-holiday-mode-m">
+            <img
+              src="https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/mobile-view/holiday.jpg"
+              alt="" title="" class="img-fluid d-block mx-auto">
+            <div class="part-holiday-mode-m-content holiday-mode-1-bg">
+              <h4 style="color:#000; font-weight:700;">
+                <span class="display">HOLIDAY</span><span> MODE<span>
+                  </span></span>
+              </h4>
+              <p style="color:#000;">In holiday mode, only freezer compartment stays active and fridge compartment
+                remains idle.
+              </p>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+
+
+      <!-- specification tab section  -->
+      <div id="nd-technical-specification" class="nd-tab-content">
+        <p>specification</p>
+      </div>
+
+      <!-- Gallery tab section  -->
+      <div id="nd-picture-gallery" class="nd-tab-content">
+        <p>Gallery</p>
+      </div>
+
+
+      <!-- Video tutorial tab section  -->
+      <div id="nd-video-tutorial" class="nd-tab-content">
+        <p>Tutorial</p>
+      </div>
+
+
+      <!-- Support tab section  -->
+      <div id="nd-supports" class="nd-tab-content">
+        <p>support</p>
+      </div>
+
+      <!-- Download tab section  -->
+      <div id="nd-downloads" class="nd-tab-content">
+        <p>download</p>
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <script>
+    document.querySelectorAll('.nd-tab-link').forEach(tab => {
+      tab.addEventListener('click', () => {
+        event.preventDefault();
+        document.querySelectorAll('.nd-tab-link').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.nd-tab-content').forEach(tc => tc.classList.remove('active'));
+        document.querySelectorAll('.nd-tab-content').forEach(tc => tc.style.display = 'none');
+        tab.classList.add('active');
+        document.getElementById(tab.getAttribute('data-tab')).classList.add('active');
+        document.getElementById(tab.getAttribute('data-tab')).style.display = "block";
+      });
+    });
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,880 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  line-height: 25px;
+  color: #000;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.nd-content {
+  margin: 2% auto;
+  padding: 0 15px;
+  box-sizing: border-box;
+  max-width: 1332.09px;
+  font-family: "Segoe UI";
+}
+
+/* Tab section end  */
+
+.nd-tabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #dee2e6;
+  font-size: 14px;
+}
+
+.nd-tabs a {
+  font-family: "Titillium Web", sans-serif;
+  text-decoration: none;
+  color: #000;
+  padding: 10px 20px;
+  transition: background-color 0.3s;
+  border: 1px solid #dee2e600;
+}
+
+.nd-tabs a:hover {
+  border: 1px solid #dee2e6;
+  border-radius: 6px 6px 0 0;
+  color: #2c93e8;
+}
+
+.nd-tabs a.active {
+  color: #0862ae !important;
+  font-weight: bold;
+  border-radius: 6px 6px 0 0;
+  background: white;
+  border: 1px solid #dee2e6;
+  border-bottom: 0;
+}
+
+.nd-tab-content {
+  display: none;
+}
+
+.nd-tab-content.active {
+  display: block;
+}
+
+
+/* Mobile Tab */
+
+.nd-tabs-m {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #dee2e6;
+  font-size: 14px;
+}
+
+.nd-tabs-m a {
+  font-family: "Titillium Web", sans-serif;
+  text-decoration: none;
+  color: #000;
+  padding: 8px 8px;
+  transition: background-color 0.1s;
+  border: 1px solid #dee2e600;
+}
+
+.nd-tabs-m a:hover {
+  border: 1px solid #dee2e6;
+  border-radius: 4px 4px 0 0;
+  color: #2c93e8;
+}
+
+.nd-tabs-m a.active {
+  color: #0862ae !important;
+  font-weight: bold;
+  border-radius: 4px 4px 0 0;
+  background: #33A3DC;
+  border: 1px solid #dee2e6;
+  border-bottom: 0;
+}
+
+/* Tab bar section end  */
+
+
+/* Feature section start from here  */
+
+/* utill style start */
+.cus_div_style,
+.single_tvc {
+  position: relative;
+}
+
+.ml-auto,
+.mx-auto {
+  margin-left: auto !important;
+}
+
+.mr-auto,
+.mx-auto {
+  margin-right: auto !important;
+}
+
+.d-block {
+  display: block !important;
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+.row {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.col-1 {
+  -ms-flex: 0 0 8.333333%;
+  flex: 0 0 8.333333%;
+  max-width: 8.333333%;
+}
+
+.col-2 {
+  -ms-flex: 0 0 16.666667%;
+  flex: 0 0 16.666667%;
+  max-width: 16.666667%;
+}
+
+.col-3 {
+  -ms-flex: 0 0 25%;
+  flex: 0 0 25%;
+  max-width: 25%;
+}
+
+.col-4 {
+  -ms-flex: 0 0 33.333333%;
+  flex: 0 0 33.333333%;
+  max-width: 33.333333%;
+}
+
+.col-5 {
+  -ms-flex: 0 0 41.666667%;
+  flex: 0 0 41.666667%;
+  max-width: 41.666667%;
+}
+
+.col-6 {
+  -ms-flex: 0 0 50%;
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+
+.col-7 {
+  -ms-flex: 0 0 58.333333%;
+  flex: 0 0 58.333333%;
+  max-width: 58.333333%;
+}
+
+.col-8 {
+  -ms-flex: 0 0 66.666667%;
+  flex: 0 0 66.666667%;
+  max-width: 66.666667%;
+}
+
+.col-10 {
+  -ms-flex: 0 0 83.333333%;
+  flex: 0 0 83.333333%;
+  max-width: 83.333333%;
+}
+
+.col,
+.col-1,
+.col-10,
+.col-11,
+.col-12,
+.col-2,
+.col-3,
+.col-4,
+.col-5,
+.col-6,
+.col-7,
+.col-8,
+.col-9,
+.col-auto,
+.col-lg,
+.col-lg-1,
+.col-lg-10,
+.col-lg-11,
+.col-lg-12,
+.col-lg-2,
+.col-lg-3,
+.col-lg-4,
+.col-lg-5,
+.col-lg-6,
+.col-lg-7,
+.col-lg-8,
+.col-lg-9,
+.col-lg-auto,
+.col-md,
+.col-md-1,
+.col-md-10,
+.col-md-11,
+.col-md-12,
+.col-md-2,
+.col-md-3,
+.col-md-4,
+.col-md-5,
+.col-md-6,
+.col-md-7,
+.col-md-8,
+.col-md-9,
+.col-md-auto,
+.col-sm,
+.col-sm-1,
+.col-sm-10,
+.col-sm-11,
+.col-sm-12,
+.col-sm-2,
+.col-sm-3,
+.col-sm-4,
+.col-sm-5,
+.col-sm-6,
+.col-sm-7,
+.col-sm-8,
+.col-sm-9,
+.col-sm-auto,
+.col-xl,
+.col-xl-1,
+.col-xl-10,
+.col-xl-11,
+.col-xl-12,
+.col-xl-2,
+.col-xl-3,
+.col-xl-4,
+.col-xl-5,
+.col-xl-6,
+.col-xl-7,
+.col-xl-8,
+.col-xl-9,
+.col-xl-auto {
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+/* utill style end */
+
+
+
+/* hover state start  */
+
+
+.image-zoom-effect {
+  transition: transform .7s;
+}
+
+.image-zoom-effect:hover {
+  -ms-transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.05);
+}
+
+/* hover state end  */
+
+
+/* animation style started from here  */
+
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+
+.zoomIn {
+  -webkit-animation-name: zoomIn;
+  animation-name: zoomIn;
+}
+
+
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale3d(.3, .3, .3);
+    transform: scale3d(.3, .3, .3);
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+.bounceInUp {
+  -webkit-animation-name: bounceInUp;
+  animation-name: bounceInUp;
+}
+
+@keyframes bounceInUp {
+
+  0%,
+  60%,
+  75%,
+  90%,
+  100% {
+    -webkit-animation-timing-function: cubic-bezier(.215, .61, .355, 1);
+    animation-timing-function: cubic-bezier(.215, .61, .355, 1);
+  }
+
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 3000px, 0);
+    transform: translate3d(0, 3000px, 0);
+  }
+
+  60% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, -20px, 0);
+    transform: translate3d(0, -20px, 0);
+  }
+
+  75% {
+    -webkit-transform: translate3d(0, 10px, 0);
+    transform: translate3d(0, 10px, 0);
+  }
+
+  90% {
+    -webkit-transform: translate3d(0, -5px, 0);
+    transform: translate3d(0, -5px, 0);
+  }
+
+  100% {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+}
+
+/* animation style stoped from here  */
+
+.part-meet-the-supreme {
+  position: relative;
+}
+
+.part-meet-the-supreme-content {
+  position: absolute;
+  top: 0%;
+  padding: 0px;
+  width: 99%;
+  font-family: "Trebuchet MS", "sans-serif";
+  font-stretch: extra-condensed;
+}
+
+.part-meet-the-supreme-left-content {
+  position: absolute;
+  width: 73%;
+  top: 0%;
+  left: 20%;
+  padding: 9% 0 0 0;
+}
+
+.part-meet-the-supreme-right-content {
+  position: absolute;
+  width: 50%;
+}
+
+.meet-the-supreme-2-1-bg {
+  background: url('https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/mobile-view/supreme-bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.part-meet-the-supreme-m-content {
+  text-align: center;
+  padding: 30px 20px 20px 20px;
+}
+
+.part-6a9 {
+  position: relative;
+}
+
+.part-6a9-content {
+  position: absolute;
+  top: 0%;
+  padding: 0px;
+  width: 99%;
+  font-family: "Trebuchet MS", "sans-serif";
+}
+
+.nd-6a9-3-1-bg {
+  background: url('');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.part-6a9-m-content {
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}
+
+
+
+.part-super-freezing {
+  position: relative;
+}
+
+.part-super-freezing-content {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  font-family: "Trebuchet MS", "sans-serif";
+}
+
+.super-freezing-1-bg {
+  background: url('https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/mobile-view/super-freezing-bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.part-super-freezing-m-content {
+  text-align: center;
+  padding: 30px 20px 20px 20px;
+}
+
+
+.part-digital-display {
+  position: relative;
+
+}
+
+.part-digital-display-content {
+  position: absolute;
+  top: 4%;
+  padding: 0px;
+  width: 90%;
+}
+
+.part-digital-display-right-content {
+  position: absolute;
+  top: 0%;
+}
+
+.part-digital-display-left-content {
+  position: absolute;
+  top: 0%;
+}
+
+.digital-display-1-bg {
+  background: url('https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/mobile-view/digital-display-bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.part-digital-display-m-content {
+  text-align: center;
+  padding: 30px 20px 20px 20px;
+}
+
+.part-big-storage {
+  position: relative;
+
+}
+
+.part-big-storage-content {
+  position: absolute;
+  top: 0;
+  padding: 0px;
+  width: 90%;
+}
+
+.part-big-storage-left-content {
+  position: absolute;
+  top: 0%;
+}
+
+.part-big-storage-right-content {
+  width: 100%;
+  padding: 3% 0 0 32%;
+}
+
+.big-storage-1-bg {
+  background: url('https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/mobile-view/big-storage-bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.part-big-storage-m-content {
+  text-align: center;
+  padding: 30px 20px 20px 20px;
+}
+
+.part-real-tempered-glass-door {
+  position: relative;
+
+}
+
+.part-real-tempered-glass-door-content {
+  position: absolute;
+  top: 0;
+  padding: 0px;
+  width: 90%;
+}
+
+.part-real-tempered-glass-door-right-content {
+  position: absolute;
+  top: 0%;
+  width: 100%;
+}
+
+.real-tempered-glass-door-1-bg {
+  background: url('https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/mobile-view/real-tempered-glass-door-bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.part-real-tempered-glass-door-m-content {
+  text-align: center;
+  padding: 30px 20px 20px 20px;
+}
+
+.part-child-lock {
+  position: relative;
+
+}
+
+.part-child-lock-content {
+  position: absolute;
+  top: 4%;
+  padding: 0px;
+  width: 90%;
+}
+
+.part-child-lock-right-content {
+  position: absolute;
+  top: 0%;
+}
+
+.part-child-lock-left-content {
+  position: absolute;
+  top: 0%;
+}
+
+.child-lock-1-bg {
+  background: url('https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/mobile-view/child-lock-bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.part-child-lock-m-content {
+  text-align: center;
+  padding: 30px 20px 20px 20px;
+}
+
+.part-wide-voltage-design {
+  position: relative;
+
+}
+
+.part-wide-voltage-design-content {
+  position: absolute;
+  top: 0;
+  padding: 0px;
+  width: 90%;
+}
+
+.part-wide-voltage-design-right-content {
+  position: absolute;
+  top: 0%;
+  width: 100%;
+}
+
+.wide-voltage-design-1-bg {
+  background: url('https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/mobile-view/wide-voltage-design-bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.part-wide-voltage-design-m-content {
+  text-align: center;
+  padding: 30px 20px 20px 20px;
+}
+
+
+.part-intelligent-inverter {
+  position: relative;
+
+}
+
+.part-intelligent-inverter-content {
+  position: absolute;
+  top: 4%;
+  padding: 0px;
+  width: 90%;
+}
+
+.part-intelligent-inverter-right-content {
+  position: absolute;
+  top: 0%;
+}
+
+.part-intelligent-inverter-left-content {
+  position: absolute;
+  top: 0%;
+}
+
+.intelligent-inverter-1-bg {
+  background: url('https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/mobile-view/intelligent-inverter-bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.part-intelligent-inverter-m-content {
+  text-align: center;
+  padding: 30px 20px 20px 20px;
+}
+
+.part-intelligent-germ-terminator {
+  position: relative;
+
+}
+
+.part-intelligent-germ-terminator-content {
+  position: absolute;
+  top: 0;
+  padding: 0px;
+  width: 90%;
+}
+
+.part-intelligent-germ-terminator-right-content {
+  padding: 9% 0 0 0;
+}
+
+.intelligent-germ-terminator-1-bg {
+  background: url('https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/mobile-view/igt-bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.part-intelligent-germ-terminator-m-content {
+  text-align: center;
+  padding: 30px 20px 20px 20px;
+}
+
+.part-iot {
+  position: relative;
+
+}
+
+.part-iot-content {
+  position: absolute;
+  top: 0;
+  padding: 0px;
+  width: 90%;
+}
+
+.part-iot-right-content {
+  padding: 15% 0 0 0;
+}
+
+.iot-1-bg {
+  background: url('https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/mobile-view/iot-bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.part-iot-m-content {
+  text-align: center;
+  padding: 30px 20px 20px 20px;
+}
+
+.part-dual-control {
+  position: relative;
+
+}
+
+.part-dual-control-content {
+  position: absolute;
+  top: 0;
+  padding: 0px;
+  width: 90%;
+}
+
+.part-dual-control-right-content {
+  padding: 0;
+}
+
+.dual-control-1-bg {
+  background: url('https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/mobile-view/dual-control-bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.part-dual-control-m-content {
+  text-align: center;
+  padding: 30px 20px 20px 20px;
+}
+
+
+.part-holiday-mode {
+  position: relative;
+
+}
+
+.part-holiday-mode-content {
+  position: absolute;
+  top: 0;
+  padding: 0px;
+  width: 90%;
+}
+
+.part-holiday-mode-right-content {
+  padding: 15% 0 0 0;
+}
+
+.holiday-mode-1-bg {
+  background: url('https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/mobile-view/holiday-bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.part-holiday-mode-m-content {
+  text-align: center;
+  padding: 0px 20px 274px 20px;
+}
+
+.delay-250ms {
+  -webkit-animation-delay: 250ms;
+  animation-delay: 250ms;
+}
+
+.delay-500ms {
+  -webkit-animation-delay: 500ms;
+  animation-delay: 500ms;
+}
+
+.delay-700ms {
+  -webkit-animation-delay: 700ms;
+  animation-delay: 700ms;
+}
+
+.delay-1400ms {
+  -webkit-animation-delay: 1900ms;
+  animation-delay: 1900ms;
+}
+
+.delay-1500ms {
+  -webkit-animation-delay: 1900ms;
+  animation-delay: 1900ms;
+}
+
+.digital {
+  color: #fff;
+}
+
+.display {
+  background: linear-gradient(90deg, rgba(137, 137, 137, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(137, 137, 137, 1) 100%);
+  border-radius: 3px;
+  padding: 0 2px;
+  border: 2px solid rgba(137, 137, 137, 1) 50%;
+}
+
+.bigger-better-smarter {
+  background: linear-gradient(90deg, rgba(137, 137, 137, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(137, 137, 137, 1) 100%);
+  border-radius: 3px;
+  padding: 0 2px;
+  border: 2px solid rgba(137, 137, 137, 1) 50%;
+}
+
+.child {
+  background: linear-gradient(90deg, rgba(137, 137, 137, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(137, 137, 137, 1) 100%);
+  border-radius: 3px;
+  padding: 0 2px;
+  border: 2px solid rgba(137, 137, 137, 1) 50%;
+}
+
+.lock {
+  color: #fff;
+}
+
+/* style from tag started */
+.nd-h1,
+.nd-h2,
+.nd-h3,
+.nd-h4,
+.nd-h5,
+.nd-h6 {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-bottom: .5rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.nd-p {
+  font-family: Titillium Web;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+/* style from tag stoped */
+
+
+
+
+
+
+
+
+
+
+
+/* responsive start from here */
+
+@media (min-width: 768px) {
+  .desktop-show {
+    display: block;
+  }
+
+  .mobile-show {
+    display: none;
+  }
+
+}
+
+@media (max-width: 768px) {
+  .desktop-show {
+    display: none;
+  }
+
+  .mobile-show {
+    display: block;
+  }
+
+  .nd-content {
+    margin: 0;
+    padding: 0;
+    max-width: 1332.09px;
+    font-family: "Segoe UI";
+  }
+}
+
+
+
+/* responsive end */
