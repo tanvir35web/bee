@@ -825,6 +825,7 @@
 
 .nd-p {
   font-family: Titillium Web;
+  font-size: 14px;
   margin-top: 0;
   margin-bottom: 1rem;
 }
@@ -868,6 +869,59 @@
     padding: 0;
     max-width: 1332.09px;
     font-family: "Segoe UI";
+  }
+
+  
+  .nd-img {
+    max-width: 100%;
+    height: auto;
+    box-sizing: border-box;
+  }
+
+  .nd-h4 {
+    font-size: 1.5rem;
+  }
+
+  .nd-h5 {
+    font-size: 1.25rem;
+  }
+
+  .nd-h6 {
+    font-size: 1rem;
+  }
+
+  .nd-h1,
+  .nd-h2,
+  .nd-h3,
+  .nd-h4,
+  .nd-h5,
+  .nd-h6 {
+    margin-bottom: .5rem;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+
+  .nd-h1,
+  .nd-h2,
+  .nd-h3,
+  .nd-h4,
+  .nd-h5,
+  .nd-h6 {
+    /* margin: 0 0 20px 0; */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-weight: 400;
+    color: #333;
+    text-transform: none;
+  }
+
+  .nd-p {
+    font-family: Titillium Web;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 14px;
+    margin: 0 0 20px 0;
+    line-height: 25px;
+    font-weight: 400;
   }
 }
 
