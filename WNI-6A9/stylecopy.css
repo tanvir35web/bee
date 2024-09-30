@@ -933,14 +933,7 @@
 
 
 /* specification sections style started  */
-
-@media (min-width: 1825px) and (max-width: 1920px) {
-  .container-fluid {
-    max-width: 70%;
-  }
-}
-
-.container-fluid {
+.nd-container-fluid {
   width: 100%;
   padding-right: 15px;
   padding-left: 15px;
@@ -948,7 +941,24 @@
   margin-left: auto;
 }
 
-.list-group {
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .nd-container-fluid {
+      padding-right: 5px;
+      padding-left: 5px;
+      overflow: hidden;
+  }
+}
+
+@media (min-width: 1825px) and (max-width: 1920px) {
+  .nd-container-fluid {
+    max-width: 70%;
+  }
+}
+
+
+
+.nd-list-group {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: column;
@@ -957,7 +967,7 @@
   margin-bottom: 0;
 }
 
-.table {
+.nd-table {
   width: 100%;
   margin-bottom: 1rem;
   color: #212529;
@@ -967,10 +977,7 @@
   font-weight: 400;
   font-size: 14px;
   font-family: Titillium Web;
-}
 
-.table {
-  border-collapse: collapse;
 }
 
 .nd-table {
@@ -981,6 +988,8 @@
   unicode-bidi: isolate;
   border-spacing: 2px;
   border-color: gray;
+  border-collapse: collapse;
+
 }
 
 .nd-thead {
@@ -997,20 +1006,14 @@
   border-color: inherit;
 }
 
-.nd-tr {
-  display: table-row;
-  vertical-align: inherit;
-  unicode-bidi: isolate;
-  border-color: inherit;
-}
 
 .table thead th {
   vertical-align: bottom;
   border-bottom: 2px solid #dee2e6;
 }
 
-.table td,
-.table th {
+.nd-table td,
+.nd-table th {
   padding: .75rem;
   vertical-align: top;
   border-top: 1px solid #dee2e6;
@@ -1021,8 +1024,21 @@
 }
 
 
-.table-striped tbody tr:nth-of-type(odd) {
+.nd-table-striped tbody tr:nth-of-type(odd) {
   background-color: rgba(0, 0, 0, .05);
 }
 
+.nd-a {
+  text-decoration: none !important;
+}
+
 /* specification sections style ended  */
+
+
+/* video tutorial section style started  */
+
+.nd-dc-extra-product-tab iframe, .dc-extra-product-tab video {
+  max-width: 100%;
+}
+
+/* video tutorial section style ended  */
