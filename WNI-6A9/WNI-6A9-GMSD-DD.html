@@ -983,9 +983,8 @@
     </div>
 
     <div>
+      <!-- Feature tab section -->
       <div id="nd-features" class="nd-tab-content active">
-
-        <!-- Feature tab section  -->
 
         <section id="part-meet-the-supreme">
           <div class="desktop-show part-meet-the-supreme ">
@@ -994,8 +993,7 @@
               alt="" title="" class="img-fluid d-block mx-auto">
             <div class="part-meet-the-supreme-content">
               <div class="row">
-                <div class="col-4 delay-900ms wow  zoomIn animated"
-                  style="visibility: visible; animation-name: zoomIn;">
+                <div class="col-4 delay-900ms wow  zoomIn " style="visibility: visible; animation-name: zoomIn;">
                   <img
                     src="https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/desktop-view/meet-the-supreme-refrigerator.webp"
                     alt="" title=""
@@ -1010,7 +1008,7 @@
                     style="padding: 2% 0 0 6%; line-height: 1.2;"
                     src="https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/desktop-view/supreme.png"
                     alt="" title="">
-                  <h4 class="cus_div_style wow bounceInUp"
+                  <h4 class="cus_div_style wow bounceInUp animated"
                     style="color: rgb(0, 0, 0); font-weight: 700; text-align: left; font-size: 1.8rem; padding: 10% 0px 0px 6%; line-height: 1.2; visibility: visible; animation-name: bounceInUp;">
                     <span class="bigger-better-smarter">BIGGER</span>
                     <span class="bigger-better-smarter">BETTER</span>
@@ -1052,7 +1050,7 @@
                     style="padding: 11% 0px 0px 0%; width: 31%; line-height: 1.2; visibility: visible; animation-name: zoomIn;"
                     src="https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/desktop-view/6a9-logo.png"
                     alt="" title="">
-                  <img class="wow  zoomIn image-zoom-effect d-block mx-auto"
+                  <img class="wow image-zoom-effect d-block mx-auto"
                     style="padding: 12% 0px 0px 0%; width: 67%; line-height: 1.2; visibility: visible; animation-name: zoomIn;"
                     src="https://waltonbd.com/image/catalog/refrigerator-and-freezer/non-frost-refrigerator/wni-6a9-gdsd-dd/features/desktop-view/6a9-technology-logo.png"
                     alt="" title="">
@@ -1979,6 +1977,48 @@
         document.getElementById(tab.getAttribute('data-tab')).style.display = "block";
       });
     });
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+      // Define options for the IntersectionObserver
+      let options = {
+        root: null,
+        rootMargin: '20px',
+        threshold: 0.1
+      };
+
+      // Create an IntersectionObserver instance
+      let observer = new IntersectionObserver(function (entries, observer) {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      }, options);
+
+
+
+
+      let zoomInElements = document.querySelectorAll('.zoomIn');
+      zoomInElements.forEach(element => {
+        observer.observe(element);
+      });
+
+      let bounceInUpElements = document.querySelectorAll('.bounceInUp');
+      bounceInUpElements.forEach(element => {
+        observer.observe(element);
+      });
+
+      let fadeInLeftElements = document.querySelectorAll('.fadeInLeft');
+      fadeInLeftElements.forEach(element => {
+        observer.observe(element);
+      });
+
+    });
+
+
+
+
   </script>
 
 </body>

@@ -264,6 +264,108 @@
 
 
 
+
+
+/* animation style started from here  */
+
+
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.zoomIn {
+  opacity: 0;
+  -webkit-transform: scale3d(.3, .3, .3);
+  transform: scale3d(.3, .3, .3);
+  transition: all 1s ease;
+}
+
+.zoomIn.active {
+  opacity: 1;
+  -webkit-transform: scale3d(1, 1, 1);
+  transform: scale3d(1, 1, 1);
+}
+
+
+
+.bounceInUp {
+  opacity: 0;
+  transform: translate3d(0, 3000px, 0);
+  transition: all 1s ease;
+  animation-name: none;
+  /* Ensure no animation on load */
+}
+
+.bounceInUp.active {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  animation-name: bounceInUp;
+  /* Apply the bounceInUp animation */
+  animation-duration: 1s;
+  animation-timing-function: cubic-bezier(.215, .61, .355, 1);
+}
+
+@keyframes bounceInUp {
+
+  0%,
+  60%,
+  75%,
+  90%,
+  100% {
+    animation-timing-function: cubic-bezier(.215, .61, .355, 1);
+  }
+
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 3000px, 0);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translate3d(0, -20px, 0);
+  }
+
+  75% {
+    transform: translate3d(0, 10px, 0);
+  }
+
+  90% {
+    transform: translate3d(0, -5px, 0);
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+
+/* Initial state for fadeInLeft */
+.fadeInLeft {
+  opacity: 0;
+  transform: translate3d(-100%, 0, 0);
+  /* Start off-screen to the left */
+  transition: all 1s ease;
+  animation-name: none;
+  /* Prevent animation on load */
+}
+
+.fadeInLeft.active {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  /* Move to final position */
+  animation-name: fadeInLeft;
+  /* Apply the fadeInLeft animation */
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+}
+
+
+/* animation style stoped from here  */
+
 /* hover state start  */
 
 
@@ -280,80 +382,6 @@
 /* hover state end  */
 
 
-/* animation style started from here  */
-
-
-
-.zoomIn {
-  -webkit-animation-name: zoomIn;
-  animation-name: zoomIn;
-}
-
-.animated {
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
-
-
-@keyframes zoomIn {
-  0% {
-    opacity: 0;
-    -webkit-transform: scale3d(.3, .3, .3);
-    transform: scale3d(.3, .3, .3);
-  }
-
-  50% {
-    opacity: 1;
-  }
-}
-
-.bounceInUp {
-  -webkit-animation-name: bounceInUp;
-  animation-name: bounceInUp;
-}
-
-@keyframes bounceInUp {
-
-  0%,
-  60%,
-  75%,
-  90%,
-  100% {
-    -webkit-animation-timing-function: cubic-bezier(.215, .61, .355, 1);
-    animation-timing-function: cubic-bezier(.215, .61, .355, 1);
-  }
-
-  0% {
-    opacity: 0;
-    -webkit-transform: translate3d(0, 3000px, 0);
-    transform: translate3d(0, 3000px, 0);
-  }
-
-  60% {
-    opacity: 1;
-    -webkit-transform: translate3d(0, -20px, 0);
-    transform: translate3d(0, -20px, 0);
-  }
-
-  75% {
-    -webkit-transform: translate3d(0, 10px, 0);
-    transform: translate3d(0, 10px, 0);
-  }
-
-  90% {
-    -webkit-transform: translate3d(0, -5px, 0);
-    transform: translate3d(0, -5px, 0);
-  }
-
-  100% {
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-  }
-}
-
-/* animation style stoped from here  */
 
 .part-meet-the-supreme {
   position: relative;
@@ -944,9 +972,9 @@
 
 @media (min-width: 320px) and (max-width: 480px) {
   .nd-container-fluid {
-      padding-right: 5px;
-      padding-left: 5px;
-      overflow: hidden;
+    padding-right: 5px;
+    padding-left: 5px;
+    overflow: hidden;
   }
 }
 
@@ -1037,7 +1065,8 @@
 
 /* video tutorial section style started  */
 
-.nd-dc-extra-product-tab iframe, .dc-extra-product-tab video {
+.nd-dc-extra-product-tab iframe,
+.dc-extra-product-tab video {
   max-width: 100%;
 }
 
