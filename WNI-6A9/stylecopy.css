@@ -296,14 +296,12 @@
   transform: translate3d(0, 3000px, 0);
   transition: all 1s ease;
   animation-name: none;
-  /* Ensure no animation on load */
 }
 
 .bounceInUp.active {
   opacity: 1;
   transform: translate3d(0, 0, 0);
   animation-name: bounceInUp;
-  /* Apply the bounceInUp animation */
   animation-duration: 1s;
   animation-timing-function: cubic-bezier(.215, .61, .355, 1);
 }
@@ -343,28 +341,23 @@
 }
 
 
-/* Initial state for fadeInLeft */
 .fadeInLeft {
   opacity: 0;
   transform: translate3d(-100%, 0, 0);
-  /* Start off-screen to the left */
   transition: all 1s ease;
   animation-name: none;
-  /* Prevent animation on load */
 }
 
 .fadeInLeft.active {
   opacity: 1;
   transform: translate3d(0, 0, 0);
-  /* Move to final position */
   animation-name: fadeInLeft;
-  /* Apply the fadeInLeft animation */
   animation-duration: 1s;
   animation-timing-function: ease-out;
 }
 
 
-/* animation style stoped from here  */
+/* animation style ended  */
 
 /* hover state start  */
 

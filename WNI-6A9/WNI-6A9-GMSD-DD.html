@@ -1979,44 +1979,49 @@
     });
 
 
+    // Function for animation load using observer 
     document.addEventListener("DOMContentLoaded", function () {
       // Define options for the IntersectionObserver
       let options = {
         root: null,
-        rootMargin: '20px',
-        threshold: 0.1
+        rootMargin: '20px',  // You can adjust this value for better visibility testing
+        threshold: 0.3       // Trigger when 30% of the element is in the viewport
       };
 
       // Create an IntersectionObserver instance
       let observer = new IntersectionObserver(function (entries, observer) {
         entries.forEach(entry => {
+          console.log('Observing entry'); // Log the class name of the element being observed
           if (entry.isIntersecting) {
+            console.log('Element is intersecting:'); // Log when an element is intersecting
             entry.target.classList.add('active');
+          } else {
+            console.log('Element is NOT intersecting:'); // Log when an element is NOT intersecting
           }
         });
       }, options);
 
-
-
-
+      // Observe zoomIn elements
       let zoomInElements = document.querySelectorAll('.zoomIn');
       zoomInElements.forEach(element => {
+        console.log('Observing zoomIn'); // Log element class being observed
         observer.observe(element);
       });
 
+      // Observe bounceInUp elements
       let bounceInUpElements = document.querySelectorAll('.bounceInUp');
       bounceInUpElements.forEach(element => {
+        console.log('Observing bounceInUp'); // Log element class being observed
         observer.observe(element);
       });
 
+      // Observe fadeInLeft elements
       let fadeInLeftElements = document.querySelectorAll('.fadeInLeft');
       fadeInLeftElements.forEach(element => {
+        console.log('Observing fadeInLeft'); // Log element class being observed
         observer.observe(element);
       });
-
     });
-
-
 
 
   </script>
