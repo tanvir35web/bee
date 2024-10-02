@@ -293,21 +293,15 @@
 
 .bounceInUp {
   opacity: 0;
-  transform: translate3d(0, 3000px, 0);
-  transition: all 1s ease;
-  animation-name: none;
-  /* Ensure no animation on load */
+  transform: translateY(100%);
+  transition: transform 1s, opacity 1s;
 }
 
 .bounceInUp.active {
   opacity: 1;
-  transform: translate3d(0, 0, 0);
-  animation-name: bounceInUp;
-  /* Apply the bounceInUp animation */
-  animation-duration: 1s;
-  animation-timing-function: cubic-bezier(.215, .61, .355, 1);
+  transform: translateY(0);
 }
-
+/* 
 @keyframes bounceInUp {
 
   0%,
@@ -315,50 +309,51 @@
   75%,
   90%,
   100% {
+    -webkit-animation-timing-function: cubic-bezier(.215, .61, .355, 1);
     animation-timing-function: cubic-bezier(.215, .61, .355, 1);
   }
 
   0% {
     opacity: 0;
+    -webkit-transform: translate3d(0, 3000px, 0);
     transform: translate3d(0, 3000px, 0);
   }
 
   60% {
     opacity: 1;
+    -webkit-transform: translate3d(0, -20px, 0);
     transform: translate3d(0, -20px, 0);
   }
 
   75% {
+    -webkit-transform: translate3d(0, 10px, 0);
     transform: translate3d(0, 10px, 0);
   }
 
   90% {
+    -webkit-transform: translate3d(0, -5px, 0);
     transform: translate3d(0, -5px, 0);
   }
 
   100% {
-    transform: translate3d(0, 0, 0);
-    opacity: 1;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
   }
-}
+} */
 
 
 /* Initial state for fadeInLeft */
 .fadeInLeft {
   opacity: 0;
   transform: translate3d(-100%, 0, 0);
-  /* Start off-screen to the left */
   transition: all 1s ease;
   animation-name: none;
-  /* Prevent animation on load */
 }
 
 .fadeInLeft.active {
   opacity: 1;
   transform: translate3d(0, 0, 0);
-  /* Move to final position */
   animation-name: fadeInLeft;
-  /* Apply the fadeInLeft animation */
   animation-duration: 1s;
   animation-timing-function: ease-out;
 }
