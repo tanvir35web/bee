@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Analytics R&D</title>
+    <style>
+        section {
+            height: 70vh;
+            border: 2px solid rgb(132, 132, 132);
+            margin-bottom: 10px;
+            margin: 16px;
+            border-radius: 20px;
+            padding: 20px;
+        }
+
+        .time-display {
+            font-weight: bold;
+            margin-top: 10px;
+            font-size: larger;
+        }
+
+        .total-time-display {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: #d41935;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <p class="total-time-display">Total time spent on page: 00:00:00</p>
+
+    <section id="section1">
+        Section 1
+        <button>Click Me 1</button>
+        <p class="time-display">Time spent: 00:00:00</p>
+    </section>
+    <section id="section2">
+        Section 2
+        <button>Click Me 2</button>
+        <p class="time-display">Time spent: 00:00:00</p>
+    </section>
+    <section id="section3">
+        Section 3
+        <button>Click Me 3</button>
+        <p class="time-display">Time spent: 00:00:00</p>
+    </section>
+    <section id="section4">
+        Section 4
+        <button>Click Me 4</button>
+        <p class="time-display">Time spent: 00:00:00</p>
+    </section>
+
+    <script>
+        const timeSpent = {};
+        let totalTimeSpent = 0; // Total time spent on the page
+        let totalTimer; // Timer for total time spent on the page
+        const activeSections = {}; // Track sections currently in view
+        let sectionTimers = {}; // Track the timers for sections currently in view
+
+        // Helper function to format time as HH:MM:SS
+        function formatTime(seconds) {
+            const hrs = Math.floor(seconds / 3600);
+            const mins = Math.floor((seconds % 3600) / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${hrs.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        // Update the time display inside each section
+        function updateTimeDisplay(sectionId) {
+            const sectionElement = document.getElementById(sectionId);
+            const timeDisplayElement = sectionElement.querySelector('.time-display');
+            timeDisplayElement.textContent = `Time spent: ${formatTime(timeSpent[sectionId] || 0)}`;
+        }
+
+        // Update the total time spent on the page
+        function updateTotalTimeDisplay() {
+            const totalTimeDisplayElement = document.querySelector('.total-time-display');
+            totalTimeDisplayElement.textContent = `Total time spent on page: ${formatTime(totalTimeSpent)}`;
+        }
+
+        // Start timer for a section
+        function startSectionTimer(sectionId) {
+            if (!sectionTimers[sectionId]) {
+                sectionTimers[sectionId] = setInterval(() => {
+                    timeSpent[sectionId] = (timeSpent[sectionId] || 0) + 1; // Increment time by 1 second
+                    updateTimeDisplay(sectionId); // Update the time display inside the section
+                }, 1000);
+            }
+        }
+
+        // Stop timer for a section
+        function stopSectionTimer(sectionId) {
+            if (sectionTimers[sectionId]) {
+                clearInterval(sectionTimers[sectionId]);
+                delete sectionTimers[sectionId]; // Remove the section's timer
+            }
+        }
+
+        // Start the timer for total time spent on the page
+        function startTotalTimer() {
+            totalTimer = setInterval(() => {
+                totalTimeSpent += 1; // Increment total time by 1 second
+                updateTotalTimeDisplay(); // Update the total time display at the top
+            }, 1000);
+        }
+
+        // Stop the timer for total time spent on the page
+        function stopTotalTimer() {
+            clearInterval(totalTimer);
+        }
+
+        // Observer to start tracking time when a section enters the viewport
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const sectionId = entry.target.id;
+
+                if (entry.isIntersecting) {
+                    // Start tracking time when the section enters the viewport
+                    activeSections[sectionId] = true;
+                    startSectionTimer(sectionId);
+                } else {
+                    // Stop tracking time when the section leaves the viewport
+                    delete activeSections[sectionId];
+                    stopSectionTimer(sectionId);
+                }
+            });
+        }, {
+            threshold: 0.5 // Trigger when 10% of the section is visible
+        });
+
+        // Observe each section (both top and bottom)
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Start the total time tracker when the page is loaded
+        window.onload = () => {
+            startTotalTimer(); // Start tracking total time on the page
+        };
+
+        // Handle tab visibility change
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                // If the tab is hidden, stop timers for all active sections and total timer
+                Object.keys(activeSections).forEach(sectionId => {
+                    stopSectionTimer(sectionId);
+                });
+                stopTotalTimer(); // Stop total page timer
+                console.log("Tab changed or hidden. Stopped all section timers and total timer.");
+            } else {
+                // If the tab is visible again, start timers for all active sections and total timer
+                Object.keys(activeSections).forEach(sectionId => {
+                    startSectionTimer(sectionId);
+                });
+                startTotalTimer(); // Resume total page timer
+            }
+        });
+
+        // Track button clicks
+        document.addEventListener('click', (event) => {
+            if (event.target.tagName === 'BUTTON') {
+                console.log(`Button clicked: ${event.target.innerText}`);
+            }
+        });
+
+        // Log the final time spent in each section before unloading the page
+        window.addEventListener('beforeunload', () => {
+            Object.keys(activeSections).forEach(sectionId => {
+                stopSectionTimer(sectionId);
+            });
+            stopTotalTimer(); // Stop total page timer before unload
+            console.log('Final total time spent on page:', formatTime(totalTimeSpent));
+            Object.keys(timeSpent).forEach(sectionId => {
+                console.log(`Time spent on ${sectionId}: ${formatTime(timeSpent[sectionId])}`);
+            });
+        });
+    </script>
+</body>
+</html>

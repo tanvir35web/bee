@@ -1876,12 +1876,24 @@
 
 
       <!-- Video tutorial tab section  -->
-      <div id="nd-video-tutorial" class="nd-tab-content">
+      <!-- <div id="nd-video-tutorial" class="nd-tab-content">
         <br>
         <div class="nd-dc-extra-product-tab" style="text-align: center;"><iframe frameborder="0" height="385"
             src="https://www.youtube.com/embed/6TggRqFI6-Q" title="YouTube video player" width="684"></iframe>
         </div>
-      </div>
+      </div> -->
+
+<!-- Video tutorial tab section  -->
+<div id="nd-video-tutorial" class="nd-tab-content">
+  <br>
+  <div class="nd-dc-extra-product-tab" style="text-align: center;">
+    <!-- Add the correct ID to the iframe -->
+    <iframe id="youtube-player" frameborder="0" height="385" 
+      src="https://www.youtube.com/embed/6TggRqFI6-Q" 
+      title="YouTube video player" width="684"></iframe>
+  </div>
+</div>
+
 
 
       <!-- Support tab section  -->
@@ -2025,6 +2037,92 @@
       });
     });
 
+
+    // for video analytics 
+
+// Load YouTube IFrame API
+let tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+let firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+console.log("YouTube IFrame API script added to the page.");
+
+// Declare variables to track player and analytics
+let player;
+let videoDuration = 0;
+let watchedTime = 0;
+let videoStarted = false;
+let videoCompleted = false;
+let interval;
+
+// This function creates an <iframe> (and YouTube player) after the API code downloads.
+function onYouTubeIframeAPIReady() {
+  console.log("YouTube IFrame API is ready.");
+  player = new YT.Player('youtube-player', { // Ensure ID matches iframe
+    events: {
+      'onReady': onPlayerReady,
+      'onStateChange': onPlayerStateChange
+    }
+  });
+}
+
+console.log("player data", player);
+
+// When the video player is ready
+function onPlayerReady(event) {
+  videoDuration = event.target.getDuration(); // Get the total video duration from event.target
+  console.log(`Video duration: ${formatTime(videoDuration)}`);
+}
+
+// Handle different state changes in the video player
+function onPlayerStateChange(event) {
+  console.log("Player state changed: ", event.data);
+  if (event.data == YT.PlayerState.PLAYING && !videoStarted) {
+    videoStarted = true;
+    console.log('Video started');
+    startTrackingTime(); // Start tracking watched time
+  }
+
+  if (event.data == YT.PlayerState.PAUSED) {
+    console.log('Video paused');
+    stopTrackingTime(); // Stop tracking watched time when paused
+  }
+
+  if (event.data == YT.PlayerState.ENDED) {
+    videoCompleted = true;
+    console.log('Video completed');
+    stopTrackingTime();
+    console.log(`Total watched time: ${formatTime(watchedTime)} / ${formatTime(videoDuration)}`);
+  }
+}
+
+// Track how much time is being watched
+function startTrackingTime() {
+  interval = setInterval(() => {
+    watchedTime += 1; // Increment watched time every second
+    console.log(`Watched time: ${formatTime(watchedTime)}`);
+  }, 1000);
+}
+
+// Stop tracking watched time
+function stopTrackingTime() {
+  clearInterval(interval);
+}
+
+// Format time in HH:MM:SS
+function formatTime(seconds) {
+  const hrs = Math.floor(seconds / 3600);
+  const mins = Math.floor((seconds % 3600) / 60);
+  const secs = Math.floor(seconds % 60);
+  return `${hrs.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+}
+
+// Log analytics before page unload
+window.addEventListener('beforeunload', () => {
+  stopTrackingTime();
+  console.log(`Final watched time: ${formatTime(watchedTime)} / ${formatTime(videoDuration)}`);
+});
 
   </script>
 
