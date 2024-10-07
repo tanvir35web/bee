@@ -6,12 +6,13 @@
     <title>Page Analytics R&D</title>
     <style>
         section {
-            height: 70vh;
+            height: 70vh; /* Set full height so scrolling is meaningful */
             border: 2px solid rgb(132, 132, 132);
             margin-bottom: 10px;
             margin: 16px;
             border-radius: 20px;
             padding: 20px;
+            box-sizing: border-box; /* Include padding and borders in height calculations */
         }
 
         .time-display {
@@ -20,9 +21,14 @@
             font-size: larger;
         }
 
-        .total-time-display {
+        .scroll-display {
+            margin-top: 10px;
+            font-size: smaller;
+            font-style: italic;
+        }
+
+        .total-display {
             font-size: 1.5em;
-            margin-bottom: 20px;
             font-weight: bold;
             color: #d41935;
             margin-left: 20px;
@@ -30,35 +36,50 @@
     </style>
 </head>
 <body>
-    <p class="total-time-display">Total time spent on page: 00:00:00</p>
+    <p class="total-display">Total time spent on page: 00:00:00</p>
+    <p class="total-display">Total scroll: 0%</p>
 
     <section id="section1">
         Section 1
         <button>Click Me 1</button>
         <p class="time-display">Time spent: 00:00:00</p>
+        <p class="scroll-display">Scroll: 0%</p>
     </section>
     <section id="section2">
         Section 2
         <button>Click Me 2</button>
         <p class="time-display">Time spent: 00:00:00</p>
+        <p class="scroll-display">Scroll: 0%</p>
     </section>
     <section id="section3">
         Section 3
         <button>Click Me 3</button>
         <p class="time-display">Time spent: 00:00:00</p>
+        <p class="scroll-display">Scroll: 0%</p>
     </section>
     <section id="section4">
         Section 4
         <button>Click Me 4</button>
         <p class="time-display">Time spent: 00:00:00</p>
+        <p class="scroll-display">Scroll: 0%</p>
+    </section>
+    <section id="section5">
+        Section 5
+        <button>Click Me 5</button>
+        <p class="time-display">Time spent: 00:00:00</p>
+        <p class="scroll-display">Scroll: 0%</p>
     </section>
 
     <script>
-        const timeSpent = {};
-        let totalTimeSpent = 0; // Total time spent on the page
-        let totalTimer; // Timer for total time spent on the page
-        const activeSections = {}; // Track sections currently in view
-        let sectionTimers = {}; // Track the timers for sections currently in view
+        const timeSpent = {}; // Track the time spent in each section
+        const maxScrollData = {}; // Store the max scroll percentage for each section
+        const sectionTimers = {}; // Track the timers for each section when in view
+        let totalPageTime = 0; // Total time spent on the page
+        let totalMaxScroll = 0; // Total max scroll percentage
+        const sections = document.querySelectorAll('section');
+        const sectionCount = sections.length; // Number of sections
+
+        let maxTotalScroll = 0; // Maximum total scroll value (will not decrease)
 
         // Helper function to format time as HH:MM:SS
         function formatTime(seconds) {
@@ -77,11 +98,94 @@
 
         // Update the total time spent on the page
         function updateTotalTimeDisplay() {
-            const totalTimeDisplayElement = document.querySelector('.total-time-display');
-            totalTimeDisplayElement.textContent = `Total time spent on page: ${formatTime(totalTimeSpent)}`;
+            const totalTimeDisplayElement = document.querySelectorAll('.total-display')[0];
+            totalTimeDisplayElement.textContent = `Total time spent on page: ${formatTime(totalPageTime)}`;
         }
 
-        // Start timer for a section
+        // Update the scroll percentage display inside each section
+        function updateScrollDisplay(sectionId, percentage) {
+            const sectionElement = document.getElementById(sectionId);
+            const scrollDisplayElement = sectionElement.querySelector('.scroll-display');
+            scrollDisplayElement.textContent = `Scroll: ${percentage.toFixed(2)}%`;
+        }
+
+        // Update the total scroll percentage display
+        function updateTotalMaxScroll() {
+            const totalScrollDisplayElement = document.querySelectorAll('.total-display')[1];
+            totalScrollDisplayElement.textContent = `Total scroll: ${maxTotalScroll.toFixed(2)}%`;
+        }
+
+        // Automatically set all previous sections to 100% scrolled
+        function markPreviousSectionsAsScrolled(currentIndex) {
+            for (let i = 0; i < currentIndex; i++) {
+                const sectionId = sections[i].id;
+                if (maxScrollData[sectionId] !== 100) {
+                    maxScrollData[sectionId] = 100; // Set scroll to 100%
+                    updateScrollDisplay(sectionId, 100); // Update the display
+                }
+            }
+        }
+
+        // Track scroll percentage for each section and store the max value
+        function trackSectionScroll() {
+            let totalScrollContribution = 0; // Track the total scroll percentage across all sections
+
+            sections.forEach((section, index) => {
+                const rect = section.getBoundingClientRect();
+                const sectionId = section.id;
+
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    // Calculate the amount of section visible
+                    const visibleHeight = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
+                    const totalHeight = section.scrollHeight;
+
+                    // Calculate the scroll percentage
+                    const percentageScrolled = (visibleHeight / totalHeight) * 100;
+
+                    // Update the max scroll percentage only if it's greater than the previous max
+                    if (!maxScrollData[sectionId] || percentageScrolled > maxScrollData[sectionId]) {
+                        maxScrollData[sectionId] = Math.min(percentageScrolled, 100); // Limit to 100%
+                        updateScrollDisplay(sectionId, maxScrollData[sectionId]);
+                    }
+
+                    // Automatically mark previous sections as fully scrolled
+                    markPreviousSectionsAsScrolled(index);
+
+                    // Add the max scroll percentage of each section to the total
+                    totalScrollContribution += maxScrollData[sectionId] / sectionCount;
+                }
+            });
+
+            // Calculate the total max scroll as the sum of all sections' scroll contributions
+            totalMaxScroll = Math.min(totalScrollContribution, 100);
+        }
+
+        // Track total scroll percentage independently (max value only)
+        function trackTotalScroll() {
+        const totalHeight = document.documentElement.scrollHeight;
+        const visibleHeight = window.innerHeight;
+        const scrollPosition = window.scrollY;
+
+        const totalScrollPercentage = ((scrollPosition + visibleHeight) / totalHeight) * 100;
+
+        // Update the max total scroll value (ensure it doesn't decrease)
+        if (totalScrollPercentage > maxTotalScroll) {
+            maxTotalScroll = totalScrollPercentage;
+        }
+
+        // Update the total scroll display
+        updateTotalMaxScroll();
+    }
+
+        // Track time spent on the entire page
+        function trackPageTime() {
+            setInterval(() => {
+                totalPageTime += 1; // Increment total time spent on the page
+                updateTotalTimeDisplay(); // Update the total time display
+            }, 1000);
+        }
+
+        // Start a timer for a section when it is in view
         function startSectionTimer(sectionId) {
             if (!sectionTimers[sectionId]) {
                 sectionTimers[sectionId] = setInterval(() => {
@@ -91,92 +195,81 @@
             }
         }
 
-        // Stop timer for a section
+        // Stop the timer for a section when it is out of view
         function stopSectionTimer(sectionId) {
             if (sectionTimers[sectionId]) {
-                clearInterval(sectionTimers[sectionId]);
+                clearInterval(sectionTimers[sectionId]); // Clear the timer
                 delete sectionTimers[sectionId]; // Remove the section's timer
             }
         }
 
-        // Start the timer for total time spent on the page
-        function startTotalTimer() {
-            totalTimer = setInterval(() => {
-                totalTimeSpent += 1; // Increment total time by 1 second
-                updateTotalTimeDisplay(); // Update the total time display at the top
-            }, 1000);
-        }
-
-        // Stop the timer for total time spent on the page
-        function stopTotalTimer() {
-            clearInterval(totalTimer);
-        }
-
-        // Observer to start tracking time when a section enters the viewport
+        // Track time spent in each section
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 const sectionId = entry.target.id;
-
                 if (entry.isIntersecting) {
-                    // Start tracking time when the section enters the viewport
-                    activeSections[sectionId] = true;
+                    // Start tracking time when section is in view
                     startSectionTimer(sectionId);
                 } else {
-                    // Stop tracking time when the section leaves the viewport
-                    delete activeSections[sectionId];
+                    // Stop tracking time when section is out of view
                     stopSectionTimer(sectionId);
                 }
             });
         }, {
-            threshold: 0.5 // Trigger when 10% of the section is visible
+            threshold: 0 // Trigger when 50% of the section is visible
         });
 
-        // Observe each section (both top and bottom)
-        document.querySelectorAll('section').forEach(section => {
+        // Log all data when the user navigates away
+        window.addEventListener('beforeunload', () => {
+            console.log("Total time spent on page:", formatTime(totalPageTime));
+            console.log("Total scroll progress:", maxTotalScroll.toFixed(2) + "%");
+            sections.forEach(section => {
+                const sectionId = section.id;
+                console.log(`Time spent on ${sectionId}: ${formatTime(timeSpent[sectionId] || 0)}`);
+                console.log(`Max scroll on ${sectionId}: ${maxScrollData[sectionId]?.toFixed(2)}%`);
+            });
+        });
+
+        // Observe each section for visibility
+        sections.forEach(section => {
             observer.observe(section);
         });
 
-        // Start the total time tracker when the page is loaded
+        // Track scroll on the entire window
+        window.addEventListener('scroll', trackSectionScroll);
+
+        // Track total scroll on the entire window
+        window.addEventListener('scroll', trackTotalScroll);
+
+        // Calculate initial scroll progress on load, even if there has been no user scrolling
+        function calculateInitialScrollProgress() {
+            sections.forEach((section, index) => {
+                const rect = section.getBoundingClientRect();
+                const sectionId = section.id;
+
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    const visibleHeight = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
+                    const totalHeight = section.scrollHeight;
+                    const percentageScrolled = (visibleHeight / totalHeight) * 100;
+
+                    maxScrollData[sectionId] = Math.min(percentageScrolled, 100); // Update initial scroll percentage
+                    updateScrollDisplay(sectionId, maxScrollData[sectionId]); // Update UI
+                }
+            });
+
+            // After calculating per section scroll, calculate total scroll for the first load
+            trackSectionScroll(); // For total scroll based on sections
+            trackTotalScroll();   // For total page scroll
+        }
+
+        // Start the time tracker and calculate initial scroll values when the page is loaded
         window.onload = () => {
-            startTotalTimer(); // Start tracking total time on the page
+            // Calculate initial scroll progress for sections and total scroll
+            calculateInitialScrollProgress();
+
+            // Start tracking total page time
+            trackPageTime();
         };
-
-        // Handle tab visibility change
-        document.addEventListener('visibilitychange', () => {
-            if (document.hidden) {
-                // If the tab is hidden, stop timers for all active sections and total timer
-                Object.keys(activeSections).forEach(sectionId => {
-                    stopSectionTimer(sectionId);
-                });
-                stopTotalTimer(); // Stop total page timer
-                console.log("Tab changed or hidden. Stopped all section timers and total timer.");
-            } else {
-                // If the tab is visible again, start timers for all active sections and total timer
-                Object.keys(activeSections).forEach(sectionId => {
-                    startSectionTimer(sectionId);
-                });
-                startTotalTimer(); // Resume total page timer
-            }
-        });
-
-        // Track button clicks
-        document.addEventListener('click', (event) => {
-            if (event.target.tagName === 'BUTTON') {
-                console.log(`Button clicked: ${event.target.innerText}`);
-            }
-        });
-
-        // Log the final time spent in each section before unloading the page
-        window.addEventListener('beforeunload', () => {
-            Object.keys(activeSections).forEach(sectionId => {
-                stopSectionTimer(sectionId);
-            });
-            stopTotalTimer(); // Stop total page timer before unload
-            console.log('Final total time spent on page:', formatTime(totalTimeSpent));
-            Object.keys(timeSpent).forEach(sectionId => {
-                console.log(`Time spent on ${sectionId}: ${formatTime(timeSpent[sectionId])}`);
-            });
-        });
     </script>
 </body>
 </html>
