@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Analytics R&D</title>
+    <style>
+        section {
+            height: 40vh;
+            /* Set full height so scrolling is meaningful */
+            border: 2px solid rgb(132, 132, 132);
+            margin-bottom: 10px;
+            margin: 16px;
+            border-radius: 20px;
+            padding: 20px;
+            font-size: 18px;
+            box-sizing: border-box;
+            /* Include padding and borders in height calculations */
+            background: #e8f1f6;
+
+        }
+
+        .time-display {
+            font-weight: bold;
+            margin-top: 10px;
+            font-size: larger;
+        }
+
+        .scroll-display {
+            margin-top: 10px;
+            font-size: 18px;
+            font-style: italic;
+        }
+
+        .total-display {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #d41935;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Add this somewhere in your body -->
+    <pre id="analytics-output" style="background-color: #f0f0f0; padding: 10px;"></pre>
+
+    <p class="total-display">Total time spent on page: 00:00:00</p>
+    <p class="total-display">Total scroll: 0%</p>
+
+    <section id="section1">
+        Section 1
+        <p class="time-display">Time spent: 00:00:00</p>
+        <p class="scroll-display">Scroll: 0%</p>
+    </section>
+    <section id="section2">
+        Section 2
+        <p class="time-display">Time spent: 00:00:00</p>
+        <p class="scroll-display">Scroll: 0%</p>
+    </section>
+    <section id="section3">
+        Section 3
+        <p class="time-display">Time spent: 00:00:00</p>
+        <p class="scroll-display">Scroll: 0%</p>
+    </section>
+    <section id="section4">
+        Section 4
+        <p class="time-display">Time spent: 00:00:00</p>
+        <p class="scroll-display">Scroll: 0%</p>
+    </section>
+    <section id="section5">
+        Section 5
+        <p class="time-display">Time spent: 00:00:00</p>
+        <p class="scroll-display">Scroll: 0%</p>
+    </section>
+
+    <script>
+        const timeSpent = {}; // Track the time spent in each section
+        const maxScrollData = {}; // Store the max scroll percentage for each section
+        const sectionTimers = {}; // Track the timers for each section when in view
+        let totalPageTime = 0; // Total time spent on the page
+        let totalMaxScroll = 0; // Total max scroll percentage
+        const sections = document.querySelectorAll('section');
+        const sectionCount = sections.length; // Number of sections
+
+        let maxTotalScroll = 0; // Maximum total scroll value (will not decrease)
+
+        // Helper function to format time as HH:MM:SS
+        function formatTime(seconds) {
+            const hrs = Math.floor(seconds / 3600);
+            const mins = Math.floor((seconds % 3600) / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${hrs.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        // Update the time display inside each section
+        function updateTimeDisplay(sectionId) {
+            const sectionElement = document.getElementById(sectionId);
+            const timeDisplayElement = sectionElement.querySelector('.time-display');
+            timeDisplayElement.textContent = `Time spent: ${formatTime(timeSpent[sectionId] || 0)}`;
+        }
+
+        // Update the total time spent on the page
+        function updateTotalTimeDisplay() {
+            const totalTimeDisplayElement = document.querySelectorAll('.total-display')[0];
+            totalTimeDisplayElement.textContent = `Total time spent on page: ${formatTime(totalPageTime)}`;
+        }
+
+        // Update the scroll percentage display inside each section
+        function updateScrollDisplay(sectionId, percentage) {
+            const sectionElement = document.getElementById(sectionId);
+            const scrollDisplayElement = sectionElement.querySelector('.scroll-display');
+            scrollDisplayElement.textContent = `Scroll: ${percentage.toFixed(2)}%`;
+        }
+
+        // Update the total scroll percentage display
+        function updateTotalMaxScroll() {
+            const totalScrollDisplayElement = document.querySelectorAll('.total-display')[1];
+            totalScrollDisplayElement.textContent = `Total scroll: ${maxTotalScroll.toFixed(2)}%`;
+        }
+
+        // Automatically set all previous sections to 100% scrolled
+        function markPreviousSectionsAsScrolled(currentIndex) {
+            for (let i = 0; i < currentIndex; i++) {
+                const sectionId = sections[i].id;
+                if (maxScrollData[sectionId] !== 100) {
+                    maxScrollData[sectionId] = 100; // Set scroll to 100%
+                    updateScrollDisplay(sectionId, 100); // Update the display
+                }
+            }
+        }
+
+        // Track scroll percentage for each section and store the max value
+        function trackSectionScroll() {
+            let totalScrollContribution = 0; // Track the total scroll percentage across all sections
+
+            sections.forEach((section, index) => {
+                const rect = section.getBoundingClientRect();
+                const sectionId = section.id;
+
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    // Calculate the amount of section visible
+                    const visibleHeight = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
+                    const totalHeight = section.scrollHeight;
+
+                    // Calculate the scroll percentage
+                    const percentageScrolled = (visibleHeight / totalHeight) * 100;
+
+                    // Update the max scroll percentage only if it's greater than the previous max
+                    if (!maxScrollData[sectionId] || percentageScrolled > maxScrollData[sectionId]) {
+                        maxScrollData[sectionId] = Math.min(percentageScrolled, 100); // Limit to 100%
+                        updateScrollDisplay(sectionId, maxScrollData[sectionId]);
+                    }
+
+                    // Automatically mark previous sections as fully scrolled
+                    markPreviousSectionsAsScrolled(index);
+
+                    // Add the max scroll percentage of each section to the total
+                    totalScrollContribution += maxScrollData[sectionId] / sectionCount;
+                }
+            });
+
+            // Calculate the total max scroll as the sum of all sections' scroll contributions
+            totalMaxScroll = Math.min(totalScrollContribution, 100);
+        }
+
+        // Track total scroll percentage independently (max value only)
+        function trackTotalScroll() {
+            const totalHeight = document.documentElement.scrollHeight;
+            const visibleHeight = window.innerHeight;
+            const scrollPosition = window.scrollY;
+
+            const totalScrollPercentage = ((scrollPosition + visibleHeight) / totalHeight) * 100;
+
+            // Update the max total scroll value (ensure it doesn't decrease)
+            if (totalScrollPercentage > maxTotalScroll) {
+                maxTotalScroll = totalScrollPercentage;
+            }
+
+            // Update the total scroll display
+            updateTotalMaxScroll();
+        }
+
+        // Track time spent on the entire page
+        function trackPageTime() {
+            setInterval(() => {
+                totalPageTime += 1; // Increment total time spent on the page
+                updateTotalTimeDisplay(); // Update the total time display
+            }, 1000);
+        }
+
+        // Start a timer for a section when it is in view
+        function startSectionTimer(sectionId) {
+            if (!sectionTimers[sectionId]) {
+                sectionTimers[sectionId] = setInterval(() => {
+                    timeSpent[sectionId] = (timeSpent[sectionId] || 0) + 1; // Increment time by 1 second
+                    updateTimeDisplay(sectionId); // Update the time display inside the section
+                }, 1000);
+            }
+        }
+
+        // Stop the timer for a section when it is out of view
+        function stopSectionTimer(sectionId) {
+            if (sectionTimers[sectionId]) {
+                clearInterval(sectionTimers[sectionId]); // Clear the timer
+                delete sectionTimers[sectionId]; // Remove the section's timer
+            }
+        }
+
+        // Track time spent in each section
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const sectionId = entry.target.id;
+                if (entry.isIntersecting) {
+                    // Start tracking time when section is in view
+                    startSectionTimer(sectionId);
+                } else {
+                    // Stop tracking time when section is out of view
+                    stopSectionTimer(sectionId);
+                }
+            });
+        }, {
+            threshold: 0 // Trigger when 50% of the section is visible
+        });
+
+        // Log all data when the user navigates away
+        // window.addEventListener('beforeunload', () => {
+        //     console.log("Total time spent on page:", formatTime(totalPageTime));
+        //     console.log("Total scroll progress:", maxTotalScroll.toFixed(2) + "%");
+        //     sections.forEach(section => {
+        //         const sectionId = section.id;
+        //         console.log(`Time spent on ${sectionId}: ${formatTime(timeSpent[sectionId] || 0)}`);
+        //         console.log(`Max scroll on ${sectionId}: ${maxScrollData[sectionId]?.toFixed(2)}%`);
+        //     });
+        // });
+
+        // Observe each section for visibility
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Track scroll on the entire window
+        window.addEventListener('scroll', trackSectionScroll);
+
+        // Track total scroll on the entire window
+        window.addEventListener('scroll', trackTotalScroll);
+
+        // Calculate initial scroll progress on load, even if there has been no user scrolling
+        function calculateInitialScrollProgress() {
+            sections.forEach((section, index) => {
+                const rect = section.getBoundingClientRect();
+                const sectionId = section.id;
+
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    const visibleHeight = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
+                    const totalHeight = section.scrollHeight;
+                    const percentageScrolled = (visibleHeight / totalHeight) * 100;
+
+                    maxScrollData[sectionId] = Math.min(percentageScrolled, 100); // Update initial scroll percentage
+                    updateScrollDisplay(sectionId, maxScrollData[sectionId]); // Update UI
+                }
+            });
+
+            // After calculating per section scroll, calculate total scroll for the first load
+            trackSectionScroll(); // For total scroll based on sections
+            trackTotalScroll();   // For total page scroll
+        }
+
+        // Start the time tracker and calculate initial scroll values when the page is loaded
+        window.onload = () => {
+            // Calculate initial scroll progress for sections and total scroll
+            calculateInitialScrollProgress();
+
+            // Start tracking total page time
+            trackPageTime();
+        };
+
+        // test purposes only
+        function sendAnalyticsData() {
+            const analyticsData = {
+                totalTimeSpent: totalPageTime +" sec",
+                totalScrollProgress: maxTotalScroll +" %",
+                sections: []
+            };
+
+            sections.forEach(section => {
+                const sectionId = section.id;
+                analyticsData.sections.push({
+                    sectionId: sectionId,
+                    timeSpent: timeSpent[sectionId] || 0 +" sec",
+                    maxScroll: maxScrollData[sectionId] || 0 +" %"
+                });
+            });
+
+            // Convert data to JSON
+            const data = JSON.stringify(analyticsData);
+
+            // Send data using navigator.sendBeacon
+            const url = 'http://10.10.12.123:8000/api/test-section-analytics'; // Replace with your server endpoint
+            navigator.sendBeacon(url, data);
+
+            // For debugging purposes, you might log the data to the console
+            console.log("Analytics Data Sent:", analyticsData);
+
+            // For testing: Display data on the page
+            const outputElement = document.getElementById('analytics-output');
+            if (!outputElement) {
+                const newOutputElement = document.createElement('pre');
+                newOutputElement.id = 'analytics-output';
+                document.body.appendChild(newOutputElement);
+            }
+            document.getElementById('analytics-output').textContent = JSON.stringify(analyticsData, null, 2);
+        }
+
+
+        document.addEventListener('visibilitychange', () => {
+            if (document.visibilityState === 'hidden') {
+                sendAnalyticsData();
+            }
+        });
+
+
+    </script>
+</body>
+
+</html>
