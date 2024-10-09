@@ -1126,8 +1126,7 @@
         if (activeTabTimer) clearInterval(activeTabTimer);
         activeTabTimer = setInterval(() => {
             if (document.visibilityState === 'visible') {  // Only track time when the page is visible
-                const timeSpentOnTab = getTimeSpentOnActiveTab();
-                tabTimeSpent[activeTab] = timeSpentOnTab;
+                tabTimeSpent[activeTab] = getTimeSpentOnActiveTab();
                 tabDetails[activeTab].totalTimeSpent = tabTimeSpent[activeTab];
                 updateTotalStats();
             }
