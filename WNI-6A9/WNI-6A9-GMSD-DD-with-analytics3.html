@@ -1070,7 +1070,6 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        // Define options for the IntersectionObserver
         let options = {
             root: null,
             rootMargin: '20px',
@@ -1085,14 +1084,9 @@
             });
         }, options);
 
-        let zoomInElements = document.querySelectorAll('.zoomIn');
-        zoomInElements.forEach(element => observer.observe(element));
-
-        let bounceInUpElements = document.querySelectorAll('.bounceInUp');
-        bounceInUpElements.forEach(element => observer.observe(element));
-
-        let fadeInLeftElements = document.querySelectorAll('.fadeInLeft');
-        fadeInLeftElements.forEach(element => observer.observe(element));
+        document.querySelectorAll('.zoomIn, .bounceInUp, .fadeInLeft').forEach(element => {
+            observer.observe(element);
+        });
     });
 
     const tabDetails = {};
@@ -1106,7 +1100,7 @@
     const maxScrollData = {};
     const sectionTimers = {};
     const sections = document.querySelectorAll('section');
-    let isPageVisible = true; // Track if the page is visible
+    let isPageVisible = true;
 
     function initializeActiveTab() {
         if (!tabDetails[activeTab]) {
@@ -1124,9 +1118,13 @@
 
     function startRealTimeTabTracking() {
         if (activeTabTimer) clearInterval(activeTabTimer);
+        activeTabStartTime = Date.now(); // Reset the start time to current time
+
         activeTabTimer = setInterval(() => {
-            if (document.visibilityState === 'visible') {  // Only track time when the page is visible
-                tabTimeSpent[activeTab] = getTimeSpentOnActiveTab();
+            if (document.visibilityState === 'visible') {
+                const elapsedTime = getTimeSpentOnActiveTab();
+                tabTimeSpent[activeTab] += elapsedTime;
+                activeTabStartTime = Date.now(); // reset after recording time
                 tabDetails[activeTab].totalTimeSpent = tabTimeSpent[activeTab];
                 updateTotalStats();
             }
@@ -1141,10 +1139,7 @@
     }
 
     function updateTotalStats() {
-        totalTimeSpentAcrossTabs = 0;
-        Object.values(tabTimeSpent).forEach(time => {
-            totalTimeSpentAcrossTabs += time;
-        });
+        totalTimeSpentAcrossTabs = Object.values(tabTimeSpent).reduce((a, b) => a + b, 0);
 
         let totalScrollContribution = 0;
         sections.forEach(section => {
@@ -1157,7 +1152,7 @@
     function startSectionTimer(sectionId) {
         if (!sectionTimers[sectionId]) {
             sectionTimers[sectionId] = setInterval(() => {
-                if (document.visibilityState === 'visible') {  // Only track time when the page is visible
+                if (document.visibilityState === 'visible') {
                     timeSpent[sectionId] = (timeSpent[sectionId] || 0) + 1;
                     updateTotalStats();
                 }
@@ -1175,9 +1170,7 @@
     function markPreviousSectionsAsScrolled(currentSectionIndex) {
         for (let i = 0; i < currentSectionIndex; i++) {
             const sectionId = sections[i].id;
-            if (maxScrollData[sectionId] !== 100) {
-                maxScrollData[sectionId] = 100;
-            }
+            maxScrollData[sectionId] = 100;
         }
     }
 
@@ -1242,7 +1235,7 @@
         console.log("Analytics Data Sent:", analyticsData);
     }
 
-    const observer = new IntersectionObserver((entries) => {
+    const sectionObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             const sectionId = entry.target.id;
             if (entry.isIntersecting) {
@@ -1256,25 +1249,25 @@
     });
 
     sections.forEach(section => {
-        observer.observe(section);
+        sectionObserver.observe(section);
     });
 
     window.addEventListener('scroll', trackSectionScroll);
 
     document.querySelectorAll('.nd-tab-link').forEach(tab => {
-        tab.addEventListener('click', () => {
+        tab.addEventListener('click', (event) => {
             event.preventDefault();
             stopRealTimeTabTracking();
+
             document.querySelectorAll('.nd-tab-link').forEach(t => t.classList.remove('active'));
             document.querySelectorAll('.nd-tab-content').forEach(tc => tc.classList.remove('active'));
             document.querySelectorAll('.nd-tab-content').forEach(tc => tc.style.display = 'none');
+
             tab.classList.add('active');
             document.getElementById(tab.getAttribute('data-tab')).classList.add('active');
             document.getElementById(tab.getAttribute('data-tab')).style.display = "block";
 
             activeTab = tab.getAttribute('data-tab');
-            activeTabStartTime = Date.now();
-
             initializeActiveTab();
             startRealTimeTabTracking();
             updateTotalStats();
@@ -1284,15 +1277,15 @@
     document.addEventListener('visibilitychange', () => {
         if (document.visibilityState === 'hidden') {
             sendAnalyticsData();
-            stopRealTimeTabTracking(); // Stop tracking when the page is hidden
-            Object.keys(sectionTimers).forEach(stopSectionTimer); // Stop all section timers
+            stopRealTimeTabTracking();
+            Object.keys(sectionTimers).forEach(stopSectionTimer);
             isPageVisible = false;
         } else if (document.visibilityState === 'visible') {
-            activeTabStartTime = Date.now(); // Reset start time when the page becomes visible again
-            startRealTimeTabTracking(); // Resume tracking
+            activeTabStartTime = Date.now();
+            startRealTimeTabTracking();
             sections.forEach(section => {
                 if (section.getBoundingClientRect().top < window.innerHeight && section.getBoundingClientRect().bottom > 0) {
-                    startSectionTimer(section.id); // Start section timers only when visible
+                    startSectionTimer(section.id);
                 }
             });
             isPageVisible = true;
