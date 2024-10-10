@@ -1104,7 +1104,7 @@
 
     function initializeActiveTab() {
         if (!tabDetails[activeTab]) {
-            tabDetails[activeTab] = { activeTab, sections: [] };
+            tabDetails[activeTab] = {activeTab, sections: []};
         }
         if (!tabTimeSpent[activeTab]) {
             tabTimeSpent[activeTab] = 0;
@@ -1195,7 +1195,7 @@
 
     function updateTabDetails() {
         if (!tabDetails[activeTab]) {
-            tabDetails[activeTab] = { activeTab, totalTimeSpent: 0, sections: [] };
+            tabDetails[activeTab] = {activeTab, totalTimeSpent: 0, sections: []};
         }
 
         tabDetails[activeTab].totalTimeSpent = tabTimeSpent[activeTab];
@@ -1229,7 +1229,7 @@
         };
 
         const data = JSON.stringify(analyticsData);
-        const blob = new Blob([data], { type: 'application/json' });
+        const blob = new Blob([data], {type: 'application/json'});
         const url = window.location.origin + '/api/test-section-analytics';
         navigator.sendBeacon(url, blob);
         console.log("Analytics Data Sent:", analyticsData);
