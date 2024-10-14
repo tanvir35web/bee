@@ -9,8 +9,8 @@
 <body>
 <h1>Product Page</h1>
 <p>Product Name: Awesome Product</p>
-<p>Price: $490</p>
-<button id="addToCart">Add to Cart</button>
+<p class="pdp-price_type_normal" style="font-size: 50px">$49</p>
+<button style="font-size: 40px" class="add-to-cart-buy-now-btn pdp-button_theme_orange">Add to Cart</button>
 
 <script>
     // Initialize tracking data
@@ -22,16 +22,21 @@
         clickCount++;
         totalItems++;
 
+        // Get the price from the price element using class name
+        const priceElement = document.querySelector('.pdp-price_type_normal');
+        const priceText = priceElement.innerText; // Get the price text
+        const price = parseFloat(priceText.replace('$', '').trim()); // Remove the $ sign and convert to number
+
         console.log("add to cart data: ", {
-                "Add to Cart button clicked ": clickCount,
-                "Total Items: ": totalItems,
-            }
-        )
+            "Add to Cart button clicked": clickCount,
+            "Total Items": totalItems,
+            "Price": price // Include the price in the tracking data as a number
+        });
     }
 
-    // Add event listener to "Add to Cart" button
-    document.getElementById('addToCart').addEventListener('click', trackAddToCart);
-
+    // Add event listener to "Add to Cart" button with both classes
+    const addToCartButton = document.querySelector('.add-to-cart-buy-now-btn.pdp-button_theme_orange');
+    addToCartButton.addEventListener('click', trackAddToCart);
 </script>
 </body>
 </html>
