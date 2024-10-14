@@ -8,19 +8,25 @@
 
 <body>
 <h1>Product Page</h1>
-<p>Product Name: Awesome Product</p>
+<p class="pdp-mod-product-badge-title">Walton RefrigeratorWNI-6A9-GDSD-DD</p>
 <p class="pdp-price_type_normal" style="font-size: 50px">$49</p>
 <button style="font-size: 40px" class="add-to-cart-buy-now-btn pdp-button_theme_orange">Add to Cart</button>
+<button style="font-size: 40px" class="add-to-cart-buy-now-btn pdp-button_theme_bluedaraz">Buy Now</button>
 
 <script>
     // Initialize tracking data
     let clickCount = 0;
     let totalItems = 0;
 
+    let buyNowCount = 0;
+
     // Function to track button click event
     function trackAddToCart(event) {
         clickCount++;
         totalItems++;
+
+        //get product name
+        const productName = document.querySelector('.pdp-mod-product-badge-title').textContent;
 
         // Get the price from the price element using class name
         const priceElement = document.querySelector('.pdp-price_type_normal');
@@ -29,14 +35,28 @@
 
         console.log("add to cart data: ", {
             "Add to Cart button clicked": clickCount,
+            "Product Name": productName,
             "Total Items": totalItems,
             "Price": price // Include the price in the tracking data as a number
         });
     }
 
+    function trackBuyNow(event) {
+        buyNowCount++;
+
+        console.log("buy button data: ", {
+            "buy now button clicked": buyNowCount,
+        });
+
+    }
+
     // Add event listener to "Add to Cart" button with both classes
     const addToCartButton = document.querySelector('.add-to-cart-buy-now-btn.pdp-button_theme_orange');
     addToCartButton.addEventListener('click', trackAddToCart);
+
+    // Add event listener to "Buy Now" button with both classes
+    const addToBuyNowButton = document.querySelector('.add-to-cart-buy-now-btn.pdp-button_theme_bluedaraz');
+    addToBuyNowButton.addEventListener('click', trackBuyNow );
 </script>
 </body>
 </html>
