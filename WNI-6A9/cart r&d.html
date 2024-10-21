@@ -1544,7 +1544,7 @@
     document.addEventListener('visibilitychange', function () {
         if (document.hidden) {
             // Send analytics for all players when the page is hidden
-            videoAnalytics.forEach(function (video) {
+            videoAnalytics.slice(0,1).forEach(function (video) {
                 updateAnalyticsOnComplete(video.playerId);
             });
         }

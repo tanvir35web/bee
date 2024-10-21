@@ -1500,7 +1500,7 @@
         });
 
         // Send analytics to backend function (adjust as per your backend setup)
-        console.log('Video Analytics for ' + playerId + ':', videoAnalytics);
+        console.log('Video Analytics for :', videoAnalytics);
         // const blob = new Blob([JSON.stringify(videoAnalytics)], { type: 'application/json' });
         // const url = window.location.origin + '/api/test-section-analytics'; // replace the path with your server endpoint
         // navigator.sendBeacon(url, blob);
