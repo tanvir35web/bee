@@ -1321,6 +1321,8 @@
             document.querySelectorAll('.nd-tab-content').forEach(tc => tc.classList.remove('active'));
             document.querySelectorAll('.nd-tab-content').forEach(tc => tc.style.display = 'none');
 
+            const previousTab = activeTab; // Store the previously active tab
+
             tab.classList.add('active');
             document.getElementById(tab.getAttribute('data-tab')).classList.add('active');
             document.getElementById(tab.getAttribute('data-tab')).style.display = "block";
@@ -1329,8 +1331,15 @@
             initializeActiveTab();
             startRealTimeTabTracking();
             updateTotalStats();
+
+            // Check if the user is switching away from the video tab
+            if (previousTab === 'video-tab' && activeTab !== 'video-tab') {
+                // Send video analytics when leaving the video tab
+                sendVideoAnalyticsData();
+            }
         });
     });
+
 
     document.addEventListener('visibilitychange', () => {
         if (document.visibilityState === 'hidden') {
@@ -1357,51 +1366,6 @@
         trackSectionScroll();
         updateTotalStats();
     };
-    //
-    // // Initialize tracking data
-    // let clickCount = 0;
-    // let totalItems = 0;
-    //
-    // let buyNowCount = 0;
-    //
-    // // Function to track button click event
-    // function trackAddToCart(event) {
-    //     clickCount++;
-    //     totalItems++;
-    //
-    //     //get product name
-    //     const productName = document.querySelector('.pdp-mod-product-badge-title').textContent;
-    //
-    //     // Get the price from the price element using class name
-    //     const priceElement = document.querySelector('.pdp-price_type_normal');
-    //     const priceText = priceElement.innerText; // Get the price text
-    //     const price = parseFloat(priceText.replace('৳', '').replace(',', '').trim()); // Remove the Taka sign and comma, then convert to a number
-    //
-    //     console.log("add to cart data: ", {
-    //         "Add to Cart button clicked": clickCount,
-    //         "Product Name": productName,
-    //         "Total Items": totalItems,
-    //         "Price": price // Include the price in the tracking data as a number
-    //     });
-    // }
-    //
-    // function trackBuyNow(event) {
-    //     buyNowCount++;
-    //
-    //     console.log("Buy button data: ", {
-    //         "Buy now button clicked": buyNowCount,
-    //     });
-    //
-    // }
-    //
-    // // Add event listener to "Add to Cart" button with both classes
-    // const addToCartButton = document.querySelector('.add-to-cart-buy-now-btn.pdp-button_theme_orange');
-    // addToCartButton.addEventListener('click', trackAddToCart);
-    //
-    // // Add event listener to "Buy Now" button with both classes
-    // const addToBuyNowButton = document.querySelector('.add-to-cart-buy-now-btn.pdp-button_theme_bluedaraz');
-    // addToBuyNowButton.addEventListener('click', trackBuyNow);
-    //
 
     // video analytics data start from here
 
@@ -1504,6 +1468,7 @@
         // navigator.sendBeacon(url, blob);
     }
 
+
     // Track fast-forward by comparing current time with previous time
     function trackFastForward(playerId) {
         setInterval(() => {
@@ -1538,15 +1503,41 @@
         clearInterval(playIntervals[playerId]);
     }
 
+    function sendVideoAnalyticsData() {
+        videoAnalytics.forEach(function (video) {
+            // Update the analytics data for each video
+            video.playingTime = playingTimes[video.playerId];
+            video.fastForwardDetected = fastForwardEvents[video.playerId];
+        });
+
+        // Send analytics data to the backend
+        console.log('Sending Video Analytics:', videoAnalytics);
+
+        // Prepare and send data using `sendBeacon` for reliable transmission
+        const data = JSON.stringify(videoAnalytics);
+        const blob = new Blob([data], { type: 'application/json' });
+        const url = window.location.origin + '/api/test-video-analytics'; // Adjust the endpoint as needed
+        navigator.sendBeacon(url, blob);
+    }
+
+
     // Detect visibility change (e.g., if the page is hidden)
+    // document.addEventListener('visibilitychange', function () {
+    //     if (document.hidden) {
+    //         // Send analytics for all players when the page is hidden
+    //         videoAnalytics.slice(0,1).forEach(function (video) {
+    //             updateAnalyticsOnComplete(video.playerId);
+    //         });
+    //     }
+    // });
+
     document.addEventListener('visibilitychange', function () {
         if (document.hidden) {
-            // Send analytics for all players when the page is hidden
-            videoAnalytics.slice(0,1).forEach(function (video) {
-                updateAnalyticsOnComplete(video.playerId);
-            });
+            // Send video analytics when the page is hidden
+            sendVideoAnalyticsData();
         }
     });
+
 
 </script>
 
