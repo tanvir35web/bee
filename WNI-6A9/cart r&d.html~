@@ -1546,7 +1546,7 @@
     // video analytics data start from here
 
     var previousTime = 0;
-    var playingTime = 0; // Track total actual watched time
+    var playingTime = 0; // Track total playing time
     var fastForwardEvents = []; // Track fast-forward events
 
     // Initialize analytics structure
@@ -1634,29 +1634,22 @@
         setInterval(() => {
             if (player && player.getPlayerState() === YT.PlayerState.PLAYING) {
                 var currentTime = player.getCurrentTime();
-                if (currentTime > previousTime + 1) {  // Detect fast forward if more than 1 second skipped
+                if (currentTime > previousTime + 3) {  // Detect fast forward if over 3 seconds
                     console.log('Fast-forward detected from ' + previousTime + 's to ' + currentTime + 's');
                     fastForwardEvents.push({ from: previousTime, to: currentTime });
                 }
-                previousTime = currentTime; // Update previous time
+                previousTime = currentTime; // Only track time progress without updating playingTime here
             }
         }, 1000); // Poll every second
     }
 
-    // Track total actual watched time (without counting fast-forwards)
+    // Track total playing time in real-time (ignores fast-forward)
     var playTimeInterval;
     function startTrackingPlayTime() {
         playTimeInterval = setInterval(() => {
             if (player && player.getPlayerState() === YT.PlayerState.PLAYING) {
-                var currentTime = player.getCurrentTime();
-
-                // Only increment playing time if the difference is not more than 1 second
-                if (currentTime - previousTime <= 1) {
-                    playingTime++; // Count only real-time playback, without skipping
-                    console.log('Playing Time (actual watched): ' + playingTime + ' seconds');
-                }
-
-                previousTime = currentTime; // Update previous time
+                playingTime++; // Increment by 1 second per second of real-time video playback
+                console.log('Playing Time: ' + playingTime + ' seconds');
             }
         }, 1000); // Poll every second
     }
