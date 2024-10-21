@@ -1030,34 +1030,20 @@
         </div>
 
 
-        <!-- Video tutorial tab section  -->
-        <!-- <div id="nd-video-tutorial" class="nd-tab-content">
-          <br>
-          <div class="nd-dc-extra-product-tab" style="text-align: center;"><iframe frameborder="0" height="385"
-              src="https://www.youtube.com/embed/6TggRqFI6-Q" title="YouTube video player" width="684"></iframe>
-          </div>
-        </div> -->
-
-        <!-- Video tutorial tab section -->
+        <!-- video-tutorial tab section  -->
         <div id="nd-video-tutorial" class="nd-tab-content">
-            <br>
-            <div class="nd-dc-extra-product-tab" style="text-align: center;">
-                <iframe id="player" frameborder="0" height="385"
-                        src="https://www.youtube.com/embed/6TggRqFI6-Q?enablejsapi=1" title="YouTube video player" width="684"></iframe>
+            <div class="nd-dc-extra-product-tab">
+                <div class="nd-row">
+                    <div class="col-6">
+                        <iframe class="youtube-video" frameborder="0" height="385" src="https://www.youtube.com/embed/6TggRqFI6-Q?enablejsapi=1" title="YouTube video player"></iframe>
+                    </div>
+                    <div class="col-6">
+                        <iframe class="youtube-video" frameborder="0" height="385" src="https://www.youtube.com/embed/l5n4rlgoRNw?enablejsapi=1" title="YouTube video player"></iframe>
+                    </div>
+                    <!-- Add more iframe elements dynamically as needed -->
+                </div>
             </div>
         </div>
-
-<!--        &lt;!&ndash; Video tutorial tab section  &ndash;&gt;-->
-<!--        <div id="nd-video-tutorial" class="nd-tab-content">-->
-<!--            <br>-->
-<!--            <div class="nd-dc-extra-product-tab" style="text-align: center;">-->
-<!--                &lt;!&ndash; Add the correct ID to the iframe &ndash;&gt;-->
-<!--                <iframe id="youtube-player" frameborder="0" height="385"-->
-<!--                        src="https://www.youtube.com/embed/6TggRqFI6-Q"-->
-<!--                        title="YouTube video player" width="684"></iframe>-->
-<!--            </div>-->
-<!--        </div>-->
-
 
         <!-- Support tab section  -->
         <div id="nd-supports" class="nd-tab-content">
@@ -1418,163 +1404,53 @@
     const addToBuyNowButton = document.querySelector('.add-to-cart-buy-now-btn.pdp-button_theme_bluedaraz');
     addToBuyNowButton.addEventListener('click', trackBuyNow);
 
-    //
-    // // video analytics data start from here
-    //
-    // var previousTime = 0;
-    // var playingTime = 0; // Track total playing time
-    // var fastForwardEvents = []; // Track fast-forward events
-    //
-    // // Initialize analytics structure
-    // var videoAnalytics = [];
-    //
-    // // This function loads the IFrame API code asynchronously.
-    // var tag = document.createElement('script');
-    // tag.src = "https://www.youtube.com/iframe_api";
-    // var firstScriptTag = document.getElementsByTagName('script')[0];
-    // firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-    //
-    // // Create the YouTube player and track events.
-    // var player;
-    // function onYouTubeIframeAPIReady() {
-    //     player = new YT.Player('player', {
-    //         events: {
-    //             'onStateChange': onPlayerStateChange,
-    //             'onReady': onPlayerReady
-    //         }
-    //     });
-    // }
-    //
-    // // Handle player ready event and initialize analytics for the video
-    // function onPlayerReady(event) {
-    //     var videoData = player.getVideoData();
-    //     var videoDuration = player.getDuration();
-    //
-    //     videoAnalytics.push({
-    //         videoTitle: videoData.title,
-    //         videoLength: videoDuration,
-    //         isVideoPlay: false,
-    //         playingTime: 0,
-    //         fastForwardDetected: []
-    //     });
-    // }
-    //
-    // // Handle player state changes
-    // function onPlayerStateChange(event) {
-    //     if (event.data == YT.PlayerState.PLAYING) {
-    //         console.log('Video is playing');
-    //         startTrackingPlayTime();
-    //         updateAnalyticsOnPlay();
-    //         trackFastForward();
-    //     }
-    //     if (event.data == YT.PlayerState.PAUSED) {
-    //         console.log('Video is paused');
-    //         stopTrackingPlayTime();
-    //     }
-    //     if (event.data == YT.PlayerState.ENDED) {
-    //         console.log('Video has ended');
-    //         updateAnalyticsOnComplete();
-    //         stopTrackingPlayTime();
-    //     }
-    // }
-    //
-    // // Update analytics when video starts playing
-    // function updateAnalyticsOnPlay() {
-    //     var videoData = player.getVideoData();
-    //     videoAnalytics.forEach(function(video) {
-    //         if (video.videoTitle === videoData.title) {
-    //             video.isVideoPlay = true;
-    //         }
-    //     });
-    // }
-    //
-    // // Update and send analytics when video completes or visibility hidden
-    // function updateAnalyticsOnComplete() {
-    //     var videoData = player.getVideoData();
-    //     videoAnalytics.forEach(function(video) {
-    //         if (video.videoTitle === videoData.title) {
-    //             video.playingTime = playingTime;
-    //             video.fastForwardDetected = fastForwardEvents;
-    //         }
-    //     });
-    //
-    //     // Send analytics to backend function
-    //     console.log('Video Analytics:', videoAnalytics);
-    //     // const blob = new Blob([JSON.stringify(videoAnalytics)], {type: 'application/json'});
-    //     // const url = window.location.origin + '/api/test-section-analytics'; // replace the path with your server endpoint
-    //     // navigator.sendBeacon(url, blob);
-    // }
-    //
-    // // Track fast-forward by comparing current time with previous time
-    // function trackFastForward() {
-    //     setInterval(() => {
-    //         if (player && player.getPlayerState() === YT.PlayerState.PLAYING) {
-    //             var currentTime = player.getCurrentTime();
-    //             if (currentTime > previousTime + 3) {  // Detect fast forward if over 3 seconds
-    //                 console.log('Fast-forward detected from ' + previousTime + 's to ' + currentTime + 's');
-    //                 fastForwardEvents.push({ from: previousTime, to: currentTime });
-    //             }
-    //             previousTime = currentTime;
-    //         }
-    //     }, 1000); // Poll every second
-    // }
-    //
-    // // Track total playing time
-    // var playTimeInterval;
-    // function startTrackingPlayTime() {
-    //     playTimeInterval = setInterval(() => {
-    //         if (player && player.getPlayerState() === YT.PlayerState.PLAYING) {
-    //             playingTime++;
-    //             console.log('Playing Time: ' + playingTime + ' seconds');
-    //         }
-    //     }, 1000); // Poll every second
-    // }
-    //
-    // function stopTrackingPlayTime() {
-    //     clearInterval(playTimeInterval);
-    // }
-    //
-    //
-    // // Detect visibility change (e.g., if the page is hidden)
-    // document.addEventListener('visibilitychange', function() {
-    //     if (document.hidden) {
-    //         updateAnalyticsOnComplete();
-    //     }
-    // });
-
 
     // video analytics data start from here
 
-    var previousTime = 0;
-    var playingTime = 0; // Track total actual watched time
-    var fastForwardEvents = []; // Track fast-forward events
+    let players = {}; // Store players dynamically based on iframe IDs
+    let playIntervals = {}; // Store play intervals for each player
+    let playingTimes = {}; // Store the playing times for each player
+    let fastForwardEvents = {}; // Store fast-forward events for each player
+    let previousTimes = {}; // Store previous times for detecting fast-forward
+    let videoAnalytics = []; // Store analytics data for each video
 
-    // Initialize analytics structure
-    var videoAnalytics = [];
-
-    // This function loads the IFrame API code asynchronously.
-    var tag = document.createElement('script');
+    // Load the YouTube IFrame API
+    let tag = document.createElement('script');
     tag.src = "https://www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
+    let firstScriptTag = document.getElementsByTagName('script')[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-    // Create the YouTube player and track events.
-    var player;
+    // When the API is ready, initialize YouTube players for all iframes with class "youtube-video"
     function onYouTubeIframeAPIReady() {
-        player = new YT.Player('player', {
-            events: {
-                'onStateChange': onPlayerStateChange,
-                'onReady': onPlayerReady
-            }
+        const iframes = document.querySelectorAll('iframe.youtube-video'); // Select all iframe elements with class "youtube-video"
+
+        iframes.forEach((iframe, index) => {
+            const playerId = 'player' + (index + 1); // Generate a unique player ID
+            iframe.id = playerId; // Assign the ID to the iframe
+
+            // Initialize the YouTube player for the iframe
+            players[playerId] = new YT.Player(playerId, {
+                events: {
+                    'onStateChange': onPlayerStateChange,
+                    'onReady': onPlayerReady
+                }
+            });
+
+            // Initialize playing times, previous times, and fast-forward events for each player
+            playingTimes[playerId] = 0;
+            previousTimes[playerId] = 0;
+            fastForwardEvents[playerId] = [];
         });
     }
 
     // Handle player ready event and initialize analytics for the video
     function onPlayerReady(event) {
-        var videoData = player.getVideoData();
-        var videoDuration = player.getDuration();
+        const playerId = event.target.getIframe().id;
+        const videoData = players[playerId].getVideoData();
+        const videoDuration = players[playerId].getDuration();
 
         videoAnalytics.push({
+            playerId: playerId,
             videoTitle: videoData.title,
             videoLength: videoDuration,
             isVideoPlay: false,
@@ -1585,90 +1461,92 @@
 
     // Handle player state changes
     function onPlayerStateChange(event) {
+        const playerId = event.target.getIframe().id;
+
         if (event.data == YT.PlayerState.PLAYING) {
-            console.log('Video is playing');
-            startTrackingPlayTime();
-            updateAnalyticsOnPlay();
-            trackFastForward();
+            console.log('Video is playing: ' + playerId);
+            startTrackingPlayTime(playerId);
+            updateAnalyticsOnPlay(playerId);
+            trackFastForward(playerId);
         }
         if (event.data == YT.PlayerState.PAUSED) {
-            console.log('Video is paused');
-            stopTrackingPlayTime();
+            console.log('Video is paused: ' + playerId);
+            stopTrackingPlayTime(playerId);
         }
         if (event.data == YT.PlayerState.ENDED) {
-            console.log('Video has ended');
-            updateAnalyticsOnComplete();
-            stopTrackingPlayTime();
+            console.log('Video has ended: ' + playerId);
+            updateAnalyticsOnComplete(playerId);
+            stopTrackingPlayTime(playerId);
         }
     }
 
     // Update analytics when video starts playing
-    function updateAnalyticsOnPlay() {
-        var videoData = player.getVideoData();
-        videoAnalytics.forEach(function(video) {
-            if (video.videoTitle === videoData.title) {
+    function updateAnalyticsOnPlay(playerId) {
+        videoAnalytics.forEach(function (video) {
+            if (video.playerId === playerId) {
                 video.isVideoPlay = true;
             }
         });
     }
 
     // Update and send analytics when video completes or visibility hidden
-    function updateAnalyticsOnComplete() {
-        var videoData = player.getVideoData();
-        videoAnalytics.forEach(function(video) {
-            if (video.videoTitle === videoData.title) {
-                video.playingTime = playingTime;
-                video.fastForwardDetected = fastForwardEvents;
+    function updateAnalyticsOnComplete(playerId) {
+        const videoData = players[playerId].getVideoData();
+        videoAnalytics.forEach(function (video) {
+            if (video.playerId === playerId) {
+                video.playingTime = playingTimes[playerId];
+                video.fastForwardDetected = fastForwardEvents[playerId];
             }
         });
 
-        // Send analytics to backend function
-        console.log('Video Analytics:', videoAnalytics);
-        // const blob = new Blob([JSON.stringify(videoAnalytics)], {type: 'application/json'});
+        // Send analytics to backend function (adjust as per your backend setup)
+        console.log('Video Analytics for :', videoAnalytics);
+        // const blob = new Blob([JSON.stringify(videoAnalytics)], { type: 'application/json' });
         // const url = window.location.origin + '/api/test-section-analytics'; // replace the path with your server endpoint
         // navigator.sendBeacon(url, blob);
     }
 
     // Track fast-forward by comparing current time with previous time
-    function trackFastForward() {
+    function trackFastForward(playerId) {
         setInterval(() => {
-            if (player && player.getPlayerState() === YT.PlayerState.PLAYING) {
-                var currentTime = player.getCurrentTime();
-                if (currentTime > previousTime + 1) {  // Detect fast forward if more than 1 second skipped
-                    console.log('Fast-forward detected from ' + previousTime + 's to ' + currentTime + 's');
-                    fastForwardEvents.push({ from: previousTime, to: currentTime });
+            if (players[playerId] && players[playerId].getPlayerState() === YT.PlayerState.PLAYING) {
+                const currentTime = players[playerId].getCurrentTime();
+                if (currentTime > previousTimes[playerId] + 3) { // Detect fast forward if over 3 seconds
+                    console.log('Fast-forward detected for ' + playerId + ' from ' + previousTimes[playerId] + 's to ' + currentTime + 's');
+                    fastForwardEvents[playerId].push({ from: previousTimes[playerId], to: currentTime });
                 }
-                previousTime = currentTime; // Update previous time
+                previousTimes[playerId] = currentTime; // Update previous time
             }
         }, 1000); // Poll every second
     }
 
-    // Track total actual watched time (without counting fast-forwards)
-    var playTimeInterval;
-    function startTrackingPlayTime() {
-        playTimeInterval = setInterval(() => {
-            if (player && player.getPlayerState() === YT.PlayerState.PLAYING) {
-                var currentTime = player.getCurrentTime();
+    // Track total playing time for each player
+    function startTrackingPlayTime(playerId) {
+        // Clear any existing interval to prevent multiple intervals from running
+        clearInterval(playIntervals[playerId]);
 
-                // Only increment playing time if the difference is not more than 1 second
-                if (currentTime - previousTime <= 1) {
-                    playingTime++; // Count only real-time playback, without skipping
-                    console.log('Playing Time (actual watched): ' + playingTime + ' seconds');
-                }
-
-                previousTime = currentTime; // Update previous time
+        // Start a new interval for the current player
+        playIntervals[playerId] = setInterval(() => {
+            if (players[playerId] && players[playerId].getPlayerState() === YT.PlayerState.PLAYING) {
+                playingTimes[playerId]++;
+                console.log('Playing Time for ' + playerId + ': ' + playingTimes[playerId] + ' seconds');
             }
         }, 1000); // Poll every second
     }
 
-    function stopTrackingPlayTime() {
-        clearInterval(playTimeInterval);
+    // Stop tracking playing time for each player
+    function stopTrackingPlayTime(playerId) {
+        // Clear the interval when the video is paused or ended
+        clearInterval(playIntervals[playerId]);
     }
 
     // Detect visibility change (e.g., if the page is hidden)
-    document.addEventListener('visibilitychange', function() {
+    document.addEventListener('visibilitychange', function () {
         if (document.hidden) {
-            updateAnalyticsOnComplete();
+            // Send analytics for all players when the page is hidden
+            videoAnalytics.forEach(function (video) {
+                updateAnalyticsOnComplete(video.playerId);
+            });
         }
     });
 
